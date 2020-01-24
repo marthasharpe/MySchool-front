@@ -4,15 +4,15 @@ import ResourceCards from './ResourceCards';
 
 const AppTabs = () => {
     return (
-        <Tabs>
+        <Tabs className="justify-content-center" style={{marginTop: '1rem'}}>
             <Tab eventKey="tab1" title="Tab1">
                 <ResourceCards />
             </Tab>
             <Tab eventKey="tab2" title="Tab2">
-                <h1>Tab2</h1>
+                <ResourceCards />
             </Tab>
-            <Tab eventKey="tab3" title="Tab3">
-                <h1>Tab3</h1>
+            <Tab eventKey="new-tab" title="NewTab">
+                <ResourceCards />
             </Tab>
         </Tabs>
     )
