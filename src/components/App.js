@@ -1,9 +1,10 @@
 import React from 'react';
+import AppBar from './AppBar';
 
 function App() {
   return (
     <div className="App">
-      <h1>MySchool</h1>
+      <AppBar />
     </div>
   );
 }
