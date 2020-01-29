@@ -1,8 +1,9 @@
 import React from 'react';
-import { Tabs, Tab } from 'react-bootstrap';
+import { Tabs, Tab, Row, Col, Container } from 'react-bootstrap';
 import ResourceCards from './ResourceCards';
 import { getData } from '../actions/actionCreators';
 import { connect } from 'react-redux';
+import Details from './Details';
 
 const AppTabs = (props) => {
 
@@ -15,7 +16,16 @@ const AppTabs = (props) => {
             {props.resources.map(resource => {
                 return (
                     <Tab key={resource.Tab} eventKey={resource.Tab} title={resource.Tab}>
-                        <ResourceCards resource={resource}/>
+                        <Container>
+                            <Row>
+                                <Col>
+                                    <ResourceCards resource={resource}/>
+                                </Col>
+                                <Col>
+                                    <Details />
+                                </Col>
+                            </Row>
+                        </Container>
                     </Tab>
                 )
             })}
