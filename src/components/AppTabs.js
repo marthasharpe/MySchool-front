@@ -1,21 +1,40 @@
 import React from 'react';
-import {Tabs, Tab} from 'react-bootstrap';
+import { Tabs, Tab } from 'react-bootstrap';
 import ResourceCards from './ResourceCards';
+import { getData } from '../actions/actionCreators';
+import { connect } from 'react-redux';
 
-const AppTabs = () => {
+const AppTabs = (props) => {
+
+    // React.useEffect(() => {
+    //     props.getData()
+    // })
+
     return (
         <Tabs className="justify-content-center" style={{marginTop: '1rem'}}>
-            <Tab eventKey="tab1" title="Tab1">
-                <ResourceCards />
-            </Tab>
+            {props.resources.map(resource => {
+                return (
+                    <Tab eventKey={resource.Tab} title={resource.Tab}>
+                        <ResourceCards resource={resource}/>
+                    </Tab>
+                )
+            })}
             <Tab eventKey="tab2" title="Tab2">
                 <ResourceCards />
             </Tab>
-            <Tab eventKey="new-tab" title="NewTab">
+            <Tab eventKey="Starred" title="Starred">
                 <ResourceCards />
             </Tab>
         </Tabs>
     )
 }
 
-export default AppTabs;
+const mapStateToProps = ({resources}) => ({
+    resources
+})
+
+const mapDispatchToProps = {
+    getData,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AppTabs);
