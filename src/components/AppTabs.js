@@ -14,17 +14,11 @@ const AppTabs = (props) => {
         <Tabs className="justify-content-center" style={{marginTop: '1rem'}}>
             {props.resources.map(resource => {
                 return (
-                    <Tab eventKey={resource.Tab} title={resource.Tab}>
+                    <Tab key={resource.Tab} eventKey={resource.Tab} title={resource.Tab}>
                         <ResourceCards resource={resource}/>
                     </Tab>
                 )
             })}
-            <Tab eventKey="tab2" title="Tab2">
-                <ResourceCards />
-            </Tab>
-            <Tab eventKey="Starred" title="Starred">
-                <ResourceCards />
-            </Tab>
         </Tabs>
     )
 }
