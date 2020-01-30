@@ -2,9 +2,20 @@ import React from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
 
 const ResourceForm = (props) => {
+
+    const [info, setInfo] = React.useState({
+        Title: '',
+        Description: '',
+        Link: '',
+        Status: '',
+    })
     
     const handleChange = (e) => {
-        console.log(e);
+        setInfo({
+            ...info,
+            [e.target.id]: e.target.value
+        })
+        console.log(info);
     }
     
     const handleSubmit = (e) => {
@@ -20,6 +31,8 @@ const ResourceForm = (props) => {
                 <Form.Label>Title</Form.Label>
                 <Form.Control
                     type="text"
+                    id="Title"
+                    value={info.Title}
                     placeholder="name your resource"
                     onChange={handleChange}
                     />
@@ -28,14 +41,20 @@ const ResourceForm = (props) => {
                 <Form.Label>Description</Form.Label>
                 <Form.Control
                     type="text"
+                    id="Description"
+                    value={info.Description}
                     placeholder="give a brief summary"
+                    onChange={handleChange}
                     />
             </Form.Group>
             <Form.Group>
                 <Form.Label>Link</Form.Label>
                 <Form.Control
                     type="text"
+                    id="Link"
+                    value={info.Link}
                     placeholder="resource URL"
+                    onChange={handleChange}
                     />
             </Form.Group>
             <Button variant="secondary" type="submit">Submit</Button>
