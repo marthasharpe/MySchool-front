@@ -3,7 +3,7 @@ import { Tabs, Tab, Row, Col, Container } from 'react-bootstrap';
 import ResourceCards from './ResourceCards';
 import { getData } from '../actions/actionCreators';
 import { connect } from 'react-redux';
-import Details from './Details';
+import NewResource from './NewResource';
 
 const AppTabs = (props) => {
 
@@ -17,12 +17,12 @@ const AppTabs = (props) => {
                 return (
                     <Tab key={resource.Tab} eventKey={resource.Tab} title={resource.Tab}>
                         <Container>
-                            <Row>
-                                <Col>
+                            <Row style={{marginTop: "2rem"}} className="justify-content-center">
+                                <NewResource />
+                            </Row>
+                            <Row className="justify-content-center">
+                                <Col md={{span: 6}}>
                                     <ResourceCards resource={resource}/>
-                                </Col>
-                                <Col>
-                                    <Details />
                                 </Col>
                             </Row>
                         </Container>
