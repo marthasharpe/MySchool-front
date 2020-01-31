@@ -1,19 +1,25 @@
 import React from 'react';
 import { Card, Badge } from 'react-bootstrap';
+import { connect } from 'react-redux';
 
 const ResourceCards = (props) => {
+    
+    let sources = props.sources.filter(
+        source => source.subject === props.subject.tab
+    )
+    
     return (
         <React.Fragment>
-            {props.resource.Sources.map(source => {
+            {sources.map(source => {
                 return (
-                    <Card border="success" key={source.Link} style={{ marginTop: '2rem'}}>
+                    <Card border="success" key={source.link} style={{ marginTop: '2rem'}}>
                         <Card.Body>
                             <Card.Title>
-                                {source.Title} <Badge variant="secondary" pill>{source.Status}</Badge>
+                                {source.title} <Badge variant="secondary" pill>{source.status}</Badge>
                             </Card.Title>
-                            <Card.Text>{source.Description}</Card.Text>
+                            <Card.Text>{source.description}</Card.Text>
                             <Card.Link
-                                href={source.Link}
+                                href={source.link}
                                 target="_blank"
                                 >
                             Go to Source
@@ -26,4 +32,8 @@ const ResourceCards = (props) => {
     )
 }
 
-export default ResourceCards;
+const mapStateToProps = ({sources}) => ({
+    sources
+})
+
+export default connect(mapStateToProps)(ResourceCards);

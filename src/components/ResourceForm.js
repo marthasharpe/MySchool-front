@@ -4,10 +4,10 @@ import { Form, Button, Container } from 'react-bootstrap';
 const ResourceForm = (props) => {
 
     const [info, setInfo] = React.useState({
-        Title: '',
-        Description: '',
-        Link: '',
-        Status: '',
+        title: '',
+        description: '',
+        link: '',
+        status: '',
     })
     
     const handleChange = (e) => {
@@ -32,7 +32,7 @@ const ResourceForm = (props) => {
                 <Form.Control
                     type="text"
                     id="Title"
-                    value={info.Title}
+                    value={info.title}
                     placeholder="name your resource"
                     onChange={handleChange}
                     />
@@ -42,7 +42,7 @@ const ResourceForm = (props) => {
                 <Form.Control
                     type="text"
                     id="Description"
-                    value={info.Description}
+                    value={info.description}
                     placeholder="give a brief summary"
                     onChange={handleChange}
                     />
@@ -52,11 +52,13 @@ const ResourceForm = (props) => {
                 <Form.Control
                     type="text"
                     id="Link"
-                    value={info.Link}
+                    value={info.link}
                     placeholder="resource URL"
                     onChange={handleChange}
                     />
             </Form.Group>
+            {/* Add Subject checkboxes */}
+            {/* Add Status radios */}
             <Button variant="secondary" type="submit">Submit</Button>
         </Form>
         </Container>

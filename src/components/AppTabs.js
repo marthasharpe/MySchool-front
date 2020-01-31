@@ -4,37 +4,42 @@ import ResourceCards from './ResourceCards';
 import { getData } from '../actions/actionCreators';
 import { connect } from 'react-redux';
 import NewResource from './NewResource';
+import { db } from '../firebase';
 
 const AppTabs = (props) => {
 
-    // React.useEffect(() => {
-    //     props.getData()
-    // })
+    React.useEffect(() => {
+        db.collection('subjects').get()
+            .then(snapshot => snapshot.docs.forEach(doc => {
+                console.log(doc.data())
+            }))
+    }, []);
 
     return (
         <Tabs className="justify-content-center" style={{marginTop: '1rem'}}>
-            {props.resources.map(resource => {
+            {props.subjects.map(subject => {
                 return (
-                    <Tab key={resource.Tab} eventKey={resource.Tab} title={resource.Tab}>
+                    <Tab key={subject.tab} eventKey={subject.tab} title={subject.tab}>
                         <Container>
                             <Row style={{marginTop: "2rem"}} className="justify-content-center">
                                 <NewResource />
                             </Row>
                             <Row className="justify-content-center">
                                 <Col md={{span: 6}}>
-                                    <ResourceCards resource={resource}/>
+                                    <ResourceCards subject={subject}/>
                                 </Col>
                             </Row>
                         </Container>
                     </Tab>
                 )
             })}
+            <Tab title="+ New Subject"/>
         </Tabs>
     )
 }
 
-const mapStateToProps = ({resources}) => ({
-    resources
+const mapStateToProps = ({subjects}) => ({
+    subjects
 })
 
 const mapDispatchToProps = {
