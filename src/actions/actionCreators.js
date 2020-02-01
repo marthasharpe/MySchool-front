@@ -1,6 +1,7 @@
 import { db } from '../firebase';
 
 export const SET_SUBJECTS = 'SET_SUBJECTS';
+export const ADD_RESOURCE = 'ADD_RESOURCE';
 
 export const setSubjects = () => {
     return (dispatch) => {
@@ -12,5 +13,12 @@ export const setSubjects = () => {
                 })
             }
         ))
+    }
+}
+
+export const addResource = (info) => {
+    return {
+        type: ADD_RESOURCE,
+        payload: info
     }
 }

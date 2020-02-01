@@ -1,4 +1,4 @@
-import { SET_SUBJECTS } from '../actions/actionCreators';
+import { SET_SUBJECTS, ADD_RESOURCE } from '../actions/actionCreators';
 
 const initialState = {
     subjects: [
@@ -40,6 +40,11 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 subjects: [...state.subjects, action.payload],
+            }
+        case ADD_RESOURCE:
+            return {
+                ...state,
+                sources: [...state.sources, action.payload],
             }
         default:
             return state

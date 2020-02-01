@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Form, Button, Container } from 'react-bootstrap';
+import { addResource } from '../actions/actionCreators';
 
 const ResourceForm = (props) => {
 
@@ -17,12 +18,12 @@ const ResourceForm = (props) => {
             ...info,
             [e.target.name]: e.target.value
         })
-        console.log(info);
+        console.log(info)
     }
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(e);
+        props.addResource(info);
         props.handleClose();
     }
     
@@ -37,6 +38,7 @@ const ResourceForm = (props) => {
                     value={info.title}
                     placeholder="name your resource"
                     onChange={handleChange}
+                    required
                     />
             </Form.Group>
             <Form.Group>
@@ -47,6 +49,7 @@ const ResourceForm = (props) => {
                     value={info.description}
                     placeholder="give a brief summary"
                     onChange={handleChange}
+                    required
                     />
             </Form.Group>
             <Form.Group>
@@ -57,16 +60,18 @@ const ResourceForm = (props) => {
                     value={info.link}
                     placeholder="resource URL"
                     onChange={handleChange}
+                    required
                     />
             </Form.Group>
-            <Form.Group id="subject">
+            <Form.Group>
                 <Form.Label>Subject</Form.Label>
-                <Form.Control as="select">
+                <Form.Control as="select" name="subject" onChange={handleChange}>
+                    <option value="">Choose a Subject</option>
                     {props.subjects.map(subject => <option key={subject.tab} value={subject.tab}>{subject.tab}</option>)}
                 </Form.Control>
             </Form.Group>
             <Form.Label>Status</Form.Label>
-            <Form.Group id="status">
+            <Form.Group>
                 <Form.Check
                     type="radio"
                     label="Todo"
@@ -108,4 +113,8 @@ const mapStateToProps = ({subjects}) => ({
     subjects
 })
 
-export default connect(mapStateToProps)(ResourceForm);
+const mapDispatchToProps = {
+    addResource
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ResourceForm);
