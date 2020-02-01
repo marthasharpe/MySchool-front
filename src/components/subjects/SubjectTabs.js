@@ -4,6 +4,7 @@ import ResourceCards from '../resources/ResourceCards';
 import { setSubjects } from '../../actions/actionCreators';
 import { connect } from 'react-redux';
 import NewResource from '../resources/NewResource';
+import NewSubject from './NewSubject';
 
 const SubjectTabs = (props) => {
 
@@ -48,7 +49,7 @@ const SubjectTabs = (props) => {
                 eventKey="New Subject"
                 title="+ New Subject"
                 >
-                New Subject
+                <NewSubject />
             </Tab>
         </Tabs>
     )
