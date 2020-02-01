@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tabs, Tab, Row, Col, Container } from 'react-bootstrap';
+import { Tabs, Tab, Row, Col } from 'react-bootstrap';
 import ResourceCards from '../resources/ResourceCards';
 import { connect } from 'react-redux';
 import NewSubject from './NewSubject';
@@ -14,17 +14,15 @@ const SubjectTabs = (props) => {
             {props.subjects.length > 0 ? props.subjects.map(subject => {
                 return (
                     <Tab
-                        key={subject.tab}
+                        key={subject.id}
                         eventKey={subject.tab}
                         title={subject.tab}
                         >
-                        <Container>
-                            <Row className="justify-content-center">
-                                <Col md={{span: 6}}>
-                                    <ResourceCards subject={subject}/>
-                                </Col>
-                            </Row>
-                        </Container>
+                        <Row className="justify-content-center">
+                            <Col md={{span: 6}}>
+                                <ResourceCards subject={subject}/>
+                            </Col>
+                        </Row>
                     </Tab>
                 )
             }) : null}

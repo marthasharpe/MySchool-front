@@ -1,6 +1,11 @@
 import React from 'react';
-import { Card, Badge } from 'react-bootstrap';
+import { Card, Badge, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
+
+const linkStyle = {
+    lineHeight: 1,
+    textDecoration: "none",
+}
 
 const ResourceCards = (props) => {
     
@@ -16,19 +21,32 @@ const ResourceCards = (props) => {
         <React.Fragment>
             {resources.length > 0 ? resources.map(resource => {
                 return (
-                    <Card border="success" key={resource.link} style={{ marginTop: '2rem'}}>
+                    <Card key={resource.id} style={{ marginTop: '2rem'}}>
+                        <Card.Header as="h5">
+                            {resource.title} <Badge variant="secondary" pill>{resource.status}</Badge>
+                        </Card.Header>
                         <Card.Body>
-                            <Card.Title>
-                                {resource.title} <Badge variant="secondary" pill>{resource.status}</Badge>
-                            </Card.Title>
                             <Card.Text>{resource.description}</Card.Text>
-                            <Card.Link
+                        </Card.Body>
+                        <Card.Footer>
+                            <Button
                                 href={resource.link}
                                 target="_blank"
+                                variant="link"
+                                style={linkStyle}
                                 >
-                            Go to Resource
-                            </Card.Link>
-                        </Card.Body>
+                                Go to Resource
+                            </Button>
+                            /
+                            <Button
+                                variant="link"
+                                style={linkStyle}
+                                >
+                                Edit
+                            </Button>
+                            /
+                            <Button variant="link" style={linkStyle}>Delete</Button>
+                        </Card.Footer>
                     </Card>
                 )
             }) : null}

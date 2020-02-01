@@ -13,7 +13,7 @@ const NewResource = () => {
 
     return (
         <React.Fragment>
-            <Button onClick={handleShow} variant="link">
+            <Button onClick={handleShow} variant="link" id="nav-btn">
                 + New Resource
             </Button>
             <Modal show={show} onHide={handleClose} animation={false}>

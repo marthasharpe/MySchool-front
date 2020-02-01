@@ -18,7 +18,7 @@ const NewSubject = (props) => {
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        props.addSubject({...info, id: uuid()});
+        props.addSubject({id: uuid(), ...info});
         setInfo({
             tab: '',
         })

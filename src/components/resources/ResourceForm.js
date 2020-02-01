@@ -24,7 +24,7 @@ const ResourceForm = (props) => {
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        props.addResource({...info, id: uuid()});
+        props.addResource({id: uuid(), ...info});
         props.handleClose();
     }
     
