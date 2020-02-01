@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addSubject } from '../../actions/actionCreators';
 import { Container, Form, Button } from 'react-bootstrap';
+import uuid from 'react-uuid';
 
 const NewSubject = (props) => {
     const [info, setInfo] = React.useState({
@@ -17,7 +18,7 @@ const NewSubject = (props) => {
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        props.addSubject(info);
+        props.addSubject({...info, id: uuid()});
         setInfo({
             tab: '',
         })

@@ -1,18 +1,21 @@
 import {
-    SET_SUBJECTS, ADD_RESOURCE, ADD_SUBJECT
+    ADD_RESOURCE, ADD_SUBJECT
 } from '../actions/actionCreators';
 
 const initialState = {
     subjects: [
         {
+            id: "abcd",
             tab: "React"
         },
         {
+            id: "efgh",
             tab: "Redux"
         }
     ],
     resources: [
         {
+            id: "hijk",
             title: "React for Beginners",
             description: "Kent C. Dodds builds React from scratch.",
             link: "https://egghead.io/courses/the-beginner-s-guide-to-react",
@@ -20,6 +23,7 @@ const initialState = {
             subject: "React"
         },
         {
+            id: "lmno",
             title: "React Docs",
             description: "Official documentation for React.",
             link: "https://reactjs.org/docs/getting-started.html",
@@ -27,6 +31,7 @@ const initialState = {
             subject: "React"
         },
         {
+            id: "qrst",
             title: "Redux Docs",
             description: "Official Redux documentation.",
             link: "https://redux.js.org/",
@@ -36,13 +41,8 @@ const initialState = {
     ]
 };
 
-const rootReducer = (state = {subjects: [], resources: []}, action) => {
+const rootReducer = (state = initialState, action) => {
     switch (action.type) {
-        case SET_SUBJECTS:
-            return {
-                ...state,
-                subjects: [...state.subjects, action.payload],
-            }
         case ADD_RESOURCE:
             return {
                 ...state,

@@ -1,32 +1,17 @@
 import React from 'react';
 import { Tabs, Tab, Row, Col, Container } from 'react-bootstrap';
 import ResourceCards from '../resources/ResourceCards';
-import { setSubjects, setResources } from '../../actions/actionCreators';
 import { connect } from 'react-redux';
 import NewSubject from './NewSubject';
 
 const SubjectTabs = (props) => {
-
-    const setSubjects = props.setSubjects;
-    const setResources = props.setResources;
-    // React.useEffect(() => {
-    //     props.setSubjects();
-    //     // db.collection('subjects').get()
-    //     //     .then(snapshot => snapshot.docs.forEach(doc => {
-    //     //         console.log(doc.data())
-    //     //     }))
-    // }, [props]);
-    React.useEffect(() => {
-        setSubjects();
-        setResources();
-    }, [setSubjects, setResources]);
 
     return (
         <Tabs
             className="justify-content-center"
             style={{marginTop: '1rem'}}
             >
-            {props.subjects ? props.subjects.map(subject => {
+            {props.subjects.length > 0 ? props.subjects.map(subject => {
                 return (
                     <Tab
                         key={subject.tab}
@@ -58,9 +43,4 @@ const mapStateToProps = ({subjects}) => ({
     subjects
 })
 
-const mapDispatchToProps = {
-    setSubjects,
-    setResources,
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(SubjectTabs);
+export default connect(mapStateToProps)(SubjectTabs);

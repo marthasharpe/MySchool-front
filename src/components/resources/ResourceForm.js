@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Form, Button, Container } from 'react-bootstrap';
 import { addResource } from '../../actions/actionCreators';
+import uuid from 'react-uuid';
 
 const ResourceForm = (props) => {
 
@@ -23,7 +24,7 @@ const ResourceForm = (props) => {
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        props.addResource(info);
+        props.addResource({...info, id: uuid()});
         props.handleClose();
     }
     

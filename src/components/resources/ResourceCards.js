@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 const ResourceCards = (props) => {
     
     let resources = [];
+
     if (props.resources.length > 0) {
         resources = props.resources.filter(
             resource => resource.subject === props.subject.tab
@@ -13,7 +14,7 @@ const ResourceCards = (props) => {
     
     return (
         <React.Fragment>
-            {resources.length > 0 ? props.resources.map(resource => {
+            {resources.length > 0 ? resources.map(resource => {
                 return (
                     <Card border="success" key={resource.link} style={{ marginTop: '2rem'}}>
                         <Card.Body>
