@@ -1,11 +1,11 @@
 import React from 'react';
 import { Tabs, Tab, Row, Col, Container } from 'react-bootstrap';
-import ResourceCards from './ResourceCards';
-import { setSubjects } from '../actions/actionCreators';
+import ResourceCards from '../resources/ResourceCards';
+import { setSubjects } from '../../actions/actionCreators';
 import { connect } from 'react-redux';
-import NewResource from './NewResource';
+import NewResource from '../resources/NewResource';
 
-const AppTabs = (props) => {
+const SubjectTabs = (props) => {
 
     // React.useEffect(() => {
     //     props.setSubjects();
@@ -43,7 +43,13 @@ const AppTabs = (props) => {
                     </Tab>
                 )
             })}
-            <Tab title="+ New Subject"/>
+            <Tab
+                key="New Subject"
+                eventKey="New Subject"
+                title="+ New Subject"
+                >
+                New Subject
+            </Tab>
         </Tabs>
     )
 }
@@ -56,4 +62,4 @@ const mapDispatchToProps = {
     setSubjects,
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AppTabs);
+export default connect(mapStateToProps, mapDispatchToProps)(SubjectTabs);

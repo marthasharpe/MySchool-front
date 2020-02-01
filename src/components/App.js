@@ -1,6 +1,6 @@
 import React from 'react';
 import AppBar from './navbar/AppBar';
-import AppTabs from './AppTabs';
+import SubjectTabs from './subjects/SubjectTabs';
 import Home from './Home';
 import {
   BrowserRouter as Router,
@@ -14,7 +14,7 @@ function App() {
       <AppBar />
       <Switch>
         <Route exact path="/" component={Home}/>
-        <Route path="/subjects" component={AppTabs} />
+        <Route path="/subjects" component={SubjectTabs} />
       </Switch>
     </Router>
   );
