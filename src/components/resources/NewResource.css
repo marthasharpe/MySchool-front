@@ -1,0 +1,10 @@
+.btn-link {
+    text-decoration: none !important;
+    color: white !important;
+    padding: 0 10px !important;
+}
+
+.btn-link:hover {
+    text-decoration: none !important;
+    color: rgba(255,255,255,.5) !important;
+}

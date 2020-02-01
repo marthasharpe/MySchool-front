@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import ResourceForm from './ResourceForm';
+import './NewResource.css';
 
 const NewResource = () => {
     
@@ -10,10 +11,9 @@ const NewResource = () => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    
     return (
         <React.Fragment>
-            <Button onClick={handleShow} variant="outline-success">
+            <Button onClick={handleShow} variant="link">
                 + New Resource
             </Button>
             <Modal show={show} onHide={handleClose} animation={false}>

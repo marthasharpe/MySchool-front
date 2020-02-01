@@ -3,7 +3,6 @@ import { Tabs, Tab, Row, Col, Container } from 'react-bootstrap';
 import ResourceCards from '../resources/ResourceCards';
 import { setSubjects } from '../../actions/actionCreators';
 import { connect } from 'react-redux';
-import NewResource from '../resources/NewResource';
 import NewSubject from './NewSubject';
 
 const SubjectTabs = (props) => {
@@ -29,12 +28,6 @@ const SubjectTabs = (props) => {
                         title={subject.tab}
                         >
                         <Container>
-                            <Row
-                                style={{marginTop: "2rem"}}
-                                className="justify-content-center"
-                                >
-                                <NewResource />
-                            </Row>
                             <Row className="justify-content-center">
                                 <Col md={{span: 6}}>
                                     <ResourceCards subject={subject}/>
