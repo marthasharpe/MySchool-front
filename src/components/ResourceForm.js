@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Form, Button, Container } from 'react-bootstrap';
 
 const ResourceForm = (props) => {
@@ -7,13 +8,14 @@ const ResourceForm = (props) => {
         title: '',
         description: '',
         link: '',
+        subject: '',
         status: '',
     })
     
     const handleChange = (e) => {
         setInfo({
             ...info,
-            [e.target.id]: e.target.value
+            [e.target.name]: e.target.value
         })
         console.log(info);
     }
@@ -31,7 +33,7 @@ const ResourceForm = (props) => {
                 <Form.Label>Title</Form.Label>
                 <Form.Control
                     type="text"
-                    id="Title"
+                    name="title"
                     value={info.title}
                     placeholder="name your resource"
                     onChange={handleChange}
@@ -41,7 +43,7 @@ const ResourceForm = (props) => {
                 <Form.Label>Description</Form.Label>
                 <Form.Control
                     type="text"
-                    id="Description"
+                    name="description"
                     value={info.description}
                     placeholder="give a brief summary"
                     onChange={handleChange}
@@ -51,18 +53,59 @@ const ResourceForm = (props) => {
                 <Form.Label>Link</Form.Label>
                 <Form.Control
                     type="text"
-                    id="Link"
+                    name="link"
                     value={info.link}
                     placeholder="resource URL"
                     onChange={handleChange}
                     />
             </Form.Group>
-            {/* Add Subject checkboxes */}
-            {/* Add Status radios */}
+            <Form.Group id="subject">
+                <Form.Label>Subject</Form.Label>
+                <Form.Control as="select">
+                    {props.subjects.map(subject => <option key={subject.tab} value={subject.tab}>{subject.tab}</option>)}
+                </Form.Control>
+            </Form.Group>
+            <Form.Label>Status</Form.Label>
+            <Form.Group id="status">
+                <Form.Check
+                    type="radio"
+                    label="Todo"
+                    name="status"
+                    value="Todo"
+                    checked={info.status==="Todo"}
+                    onChange={handleChange}
+                    inline
+                    required
+                    />
+                <Form.Check
+                    type="radio"
+                    label="In Progress"
+                    name="status"
+                    value="In Progress"
+                    checked={info.status==="In Progress"}
+                    onChange={handleChange}
+                    inline
+                    required
+                    />
+                <Form.Check
+                    type="radio"
+                    label="Completed"
+                    name="status"
+                    value="Completed"
+                    checked={info.status==="Completed"}
+                    onChange={handleChange}
+                    inline
+                    required
+                    />
+            </Form.Group>
             <Button variant="secondary" type="submit">Submit</Button>
         </Form>
         </Container>
     )
 }
 
-export default ResourceForm;
+const mapStateToProps = ({subjects}) => ({
+    subjects
+})
+
+export default connect(mapStateToProps)(ResourceForm);

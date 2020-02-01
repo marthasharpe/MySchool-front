@@ -1,4 +1,4 @@
-// import { GET_DATA } from '../actions/actionCreators';
+import { SET_SUBJECTS } from '../actions/actionCreators';
 
 const initialState = {
     subjects: [
@@ -36,11 +36,11 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
-        // case GET_DATA:
-        //     return {
-        //         ...state,
-        //         resources: [...action.data],
-        //     }
+        case SET_SUBJECTS:
+            return {
+                ...state,
+                subjects: [...state.subjects, action.payload],
+            }
         default:
             return state
     }

@@ -1,18 +1,16 @@
-export const GET_DATA = 'GET_DATA';
+import { db } from '../firebase';
 
-export const getData = (data) => {
-    return {
-        type: GET_DATA,
-        data
+export const SET_SUBJECTS = 'SET_SUBJECTS';
+
+export const setSubjects = () => {
+    return (dispatch) => {
+        db.collection('subjects').get()
+            .then(res => res.docs.forEach(doc => {
+                dispatch({
+                    type: SET_SUBJECTS,
+                    payload: doc.data()
+                })
+            }
+        ))
     }
-    // return (dispatch) => {
-        // fetch(url)
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         dispatch({
-        //             type: GET_DATA,
-        //             data
-        //         })
-        //     })
-    // }
 }
