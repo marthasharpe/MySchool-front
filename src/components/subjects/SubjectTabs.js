@@ -7,6 +7,7 @@ import NewSubject from './NewSubject';
 
 const SubjectTabs = (props) => {
 
+    const setSubjects = props.setSubjects;
     // React.useEffect(() => {
     //     props.setSubjects();
     //     // db.collection('subjects').get()
@@ -14,13 +15,16 @@ const SubjectTabs = (props) => {
     //     //         console.log(doc.data())
     //     //     }))
     // }, [props]);
+    React.useEffect(() => {
+        setSubjects();
+    }, [setSubjects]);
 
     return (
         <Tabs
             className="justify-content-center"
             style={{marginTop: '1rem'}}
             >
-            {props.subjects.map(subject => {
+            {props.subjects ? props.subjects.map(subject => {
                 return (
                     <Tab
                         key={subject.tab}
@@ -36,7 +40,7 @@ const SubjectTabs = (props) => {
                         </Container>
                     </Tab>
                 )
-            })}
+            }) : null}
             <Tab
                 key="New Subject"
                 eventKey="New Subject"

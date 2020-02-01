@@ -36,7 +36,7 @@ const initialState = {
     ]
 };
 
-const rootReducer = (state = initialState, action) => {
+const rootReducer = (state = {subjects: [], sources: []}, action) => {
     switch (action.type) {
         case SET_SUBJECTS:
             return {

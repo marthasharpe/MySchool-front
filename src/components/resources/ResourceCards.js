@@ -4,13 +4,16 @@ import { connect } from 'react-redux';
 
 const ResourceCards = (props) => {
     
-    let sources = props.sources.filter(
-        source => source.subject === props.subject.tab
-    )
+    let sources = [];
+    if (props.sources.length > 0) {
+        sources = props.sources.filter(
+            source => source.subject === props.subject.tab
+        )
+    }
     
     return (
         <React.Fragment>
-            {sources.map(source => {
+            {sources.length > 0 ? props.sources.map(source => {
                 return (
                     <Card border="success" key={source.link} style={{ marginTop: '2rem'}}>
                         <Card.Body>
@@ -27,7 +30,7 @@ const ResourceCards = (props) => {
                         </Card.Body>
                     </Card>
                 )
-            })}
+            }) : null}
         </React.Fragment>
     )
 }
