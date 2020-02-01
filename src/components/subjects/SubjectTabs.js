@@ -1,13 +1,14 @@
 import React from 'react';
 import { Tabs, Tab, Row, Col, Container } from 'react-bootstrap';
 import ResourceCards from '../resources/ResourceCards';
-import { setSubjects } from '../../actions/actionCreators';
+import { setSubjects, setResources } from '../../actions/actionCreators';
 import { connect } from 'react-redux';
 import NewSubject from './NewSubject';
 
 const SubjectTabs = (props) => {
 
     const setSubjects = props.setSubjects;
+    const setResources = props.setResources;
     // React.useEffect(() => {
     //     props.setSubjects();
     //     // db.collection('subjects').get()
@@ -17,7 +18,8 @@ const SubjectTabs = (props) => {
     // }, [props]);
     React.useEffect(() => {
         setSubjects();
-    }, [setSubjects]);
+        setResources();
+    }, [setSubjects, setResources]);
 
     return (
         <Tabs
@@ -58,6 +60,7 @@ const mapStateToProps = ({subjects}) => ({
 
 const mapDispatchToProps = {
     setSubjects,
+    setResources,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SubjectTabs);

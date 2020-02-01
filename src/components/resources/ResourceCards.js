@@ -4,28 +4,28 @@ import { connect } from 'react-redux';
 
 const ResourceCards = (props) => {
     
-    let sources = [];
-    if (props.sources.length > 0) {
-        sources = props.sources.filter(
-            source => source.subject === props.subject.tab
+    let resources = [];
+    if (props.resources.length > 0) {
+        resources = props.resources.filter(
+            resource => resource.subject === props.subject.tab
         )
     }
     
     return (
         <React.Fragment>
-            {sources.length > 0 ? props.sources.map(source => {
+            {resources.length > 0 ? props.resources.map(resource => {
                 return (
-                    <Card border="success" key={source.link} style={{ marginTop: '2rem'}}>
+                    <Card border="success" key={resource.link} style={{ marginTop: '2rem'}}>
                         <Card.Body>
                             <Card.Title>
-                                {source.title} <Badge variant="secondary" pill>{source.status}</Badge>
+                                {resource.title} <Badge variant="secondary" pill>{resource.status}</Badge>
                             </Card.Title>
-                            <Card.Text>{source.description}</Card.Text>
+                            <Card.Text>{resource.description}</Card.Text>
                             <Card.Link
-                                href={source.link}
+                                href={resource.link}
                                 target="_blank"
                                 >
-                            Go to Source
+                            Go to Resource
                             </Card.Link>
                         </Card.Body>
                     </Card>
@@ -35,8 +35,8 @@ const ResourceCards = (props) => {
     )
 }
 
-const mapStateToProps = ({sources}) => ({
-    sources
+const mapStateToProps = ({resources}) => ({
+    resources
 })
 
 export default connect(mapStateToProps)(ResourceCards);

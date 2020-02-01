@@ -11,7 +11,7 @@ const initialState = {
             tab: "Redux"
         }
     ],
-    sources: [
+    resources: [
         {
             title: "React for Beginners",
             description: "Kent C. Dodds builds React from scratch.",
@@ -36,7 +36,7 @@ const initialState = {
     ]
 };
 
-const rootReducer = (state = {subjects: [], sources: []}, action) => {
+const rootReducer = (state = {subjects: [], resources: []}, action) => {
     switch (action.type) {
         case SET_SUBJECTS:
             return {
@@ -46,7 +46,7 @@ const rootReducer = (state = {subjects: [], sources: []}, action) => {
         case ADD_RESOURCE:
             return {
                 ...state,
-                sources: [...state.sources, action.payload],
+                resources: [...state.resources, action.payload],
             }
         case ADD_SUBJECT:
             return {
