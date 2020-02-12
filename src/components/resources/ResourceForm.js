@@ -13,18 +13,17 @@ const ResourceForm = (props) => {
         subject: '',
         status: '',
     })
-    
+
     const handleChange = (e) => {
         setInfo({
             ...info,
             [e.target.name]: e.target.value
         })
-        console.log(info)
     }
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        props.addResource({id: uuid(), ...info});
+        props.addResource({id: uuid(), ...info})
         props.handleClose();
     }
     
@@ -104,14 +103,14 @@ const ResourceForm = (props) => {
                     required
                     />
             </Form.Group>
-            <Button variant="secondary" type="submit">Submit</Button>
+            <Button variant="success" type="submit">Submit</Button>
         </Form>
         </Container>
     )
 }
 
-const mapStateToProps = ({subjects}) => ({
-    subjects
+const mapStateToProps = ({subjects, resources}) => ({
+    subjects, resources
 })
 
 const mapDispatchToProps = {

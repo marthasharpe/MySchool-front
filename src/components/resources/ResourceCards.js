@@ -21,7 +21,7 @@ const ResourceCards = (props) => {
         <React.Fragment>
             {resources.length > 0 ? resources.map(resource => {
                 return (
-                    <Card key={resource.id} style={{ marginTop: '2rem'}}>
+                    <Card key={resource.id} style={{ marginTop: '2rem', minWidth: 310, maxWidth: 450 }}>
                         <Card.Header as="h5">
                             {resource.title} <Badge variant="secondary" pill>{resource.status}</Badge>
                         </Card.Header>

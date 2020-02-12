@@ -18,9 +18,12 @@ const SubjectTabs = (props) => {
                         eventKey={subject.tab}
                         title={subject.tab}
                         >
-                        <Row className="justify-content-center">
-                            <Col md={{span: 6}}>
+                        <Row className="justify-content-center">                        
+                            <Col md={{span: 5}}>
                                 <ResourceCards subject={subject}/>
+                            </Col>
+                            <Col md={{span: 5}} style={{marginTop: 20}}>
+                                <h1>Other Info</h1>
                             </Col>
                         </Row>
                     </Tab>

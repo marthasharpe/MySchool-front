@@ -2,6 +2,11 @@ import React from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import ResourceForm from './ResourceForm';
 
+const linkStyle = {
+    lineHeight: 1,
+    textDecoration: "none",
+}
+
 const EditResource = () => {
     
     // modal controls
@@ -13,12 +18,12 @@ const EditResource = () => {
     
     return (
         <React.Fragment>
-            <Button onClick={handleShow} variant="outline-success">
-                + New Resource
+            <Button variant="link" style={linkStyle} onClick={handleShow}>
+                Edit
             </Button>
             <Modal show={show} onHide={handleClose} animation={false}>
                 <Modal.Header closeButton>
-                    <Modal.Title>New Resource</Modal.Title>
+                    <Modal.Title>Edit Resource</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <ResourceForm handleClose={handleClose}/>
