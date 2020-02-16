@@ -7,7 +7,7 @@ const linkStyle = {
     textDecoration: "none",
 }
 
-const EditResource = () => {
+const EditResource = (props) => {
     
     // modal controls
     const [show, setShow] = React.useState(false);
@@ -26,7 +26,7 @@ const EditResource = () => {
                     <Modal.Title>Edit Resource</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <ResourceForm handleClose={handleClose}/>
+                    <ResourceForm id={props.id} handleClose={handleClose}/>
                 </Modal.Body>
             </Modal>
         </React.Fragment>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Badge, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import EditResource from './EditResource';
 
 const linkStyle = {
     lineHeight: 1,
@@ -38,12 +39,7 @@ const ResourceCards = (props) => {
                                 Go to Resource
                             </Button>
                             /
-                            <Button
-                                variant="link"
-                                style={linkStyle}
-                                >
-                                Edit
-                            </Button>
+                            <EditResource id={resource.id}/>
                             /
                             <Button variant="link" style={linkStyle}>Delete</Button>
                         </Card.Footer>
