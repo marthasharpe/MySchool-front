@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Form, Button, Container } from 'react-bootstrap';
-import { addResource } from '../../actions/actionCreators';
+import { addResource, editResource } from '../../actions/actionCreators';
 import uuid from 'react-uuid';
 
 const ResourceForm = (props) => {
@@ -14,6 +14,19 @@ const ResourceForm = (props) => {
         status: '',
     })
 
+    React.useEffect(() => {
+        if (props.id) {
+            let resource = props.resources.find(resource => resource.id === props.id)
+            setInfo({
+                title: resource.title,
+                description: resource.description,
+                link: resource.link,
+                subject: resource.subject,
+                status: resource.status,      
+            })
+        }
+    }, [props.id, props.resources])
+
     const handleChange = (e) => {
         setInfo({
             ...info,
@@ -23,7 +36,7 @@ const ResourceForm = (props) => {
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        props.addResource({id: uuid(), ...info})
+        props.id ? props.editResource(props.id, info) : props.addResource({id: uuid(), ...info})
         props.handleClose();
     }
     
@@ -114,7 +127,8 @@ const mapStateToProps = ({subjects, resources}) => ({
 })
 
 const mapDispatchToProps = {
-    addResource
+    addResource,
+    editResource
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ResourceForm);

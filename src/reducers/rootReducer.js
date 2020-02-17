@@ -1,5 +1,5 @@
 import {
-    ADD_RESOURCE, ADD_SUBJECT
+    ADD_RESOURCE, ADD_SUBJECT, EDIT_RESOURCE
 } from '../actions/actionCreators';
 
 const initialState = {
@@ -52,6 +52,12 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 subjects: [...state.subjects, action.payload],
+            }
+        case EDIT_RESOURCE:
+            let resource = state.resources.find(resource => resource.id === action.id)
+            return {
+                ...state,
+                resources: [...state.resources, {...resource, ...action.payload}]
             }
         default:
             return state
