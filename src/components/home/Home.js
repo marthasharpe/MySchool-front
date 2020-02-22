@@ -1,7 +1,7 @@
 import React from 'react';
-import icon from '../openbook.png';
+import icon from '../../openbook.png';
 import { Row, Col, Jumbotron, Button } from 'react-bootstrap';
-import Signature from './Signature/Signature';
+import Signature from '../Signature/Signature';
 
 const Home = () => {
     return (

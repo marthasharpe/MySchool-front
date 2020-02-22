@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Modal } from 'react-bootstrap';
-import ResourceForm from './ResourceForm';
-import './NewResource.css';
+import ResourceForm from '../ResourceForm';
+import './ResourceModal.css';
 
 const NewResource = () => {
     

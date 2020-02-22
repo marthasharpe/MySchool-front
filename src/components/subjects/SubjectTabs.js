@@ -28,9 +28,9 @@ const SubjectTabs = ({ getSubjects, getResources, subjects }) => {
                             <Col md={{span: 5}}>
                                 <ResourceCards subject={subject}/>
                             </Col>
-                            <Col md={{span: 5}} style={{marginTop: 20}}>
+                            {/* <Col md={{span: 5}} style={{marginTop: 20}}>
                                 <h1>Other Info</h1>
-                            </Col>
+                            </Col> */}
                         </Row>
                     </Tab>
                 )

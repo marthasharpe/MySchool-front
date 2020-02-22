@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Badge, Button } from 'react-bootstrap';
+import { Card, Badge, Button, Container } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import EditResource from './EditResource';
 
@@ -45,7 +45,12 @@ const ResourceCards = (props) => {
                         </Card.Footer>
                     </Card>
                 )
-            }) : null}
+            }) : (
+                <Container>
+                    <h5>You have no resources saved.</h5>
+                    <Button variant="success" block>Delete Subject</Button>
+                </Container>
+            )}
         </React.Fragment>
     )
 }

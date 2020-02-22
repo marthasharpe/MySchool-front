@@ -1,7 +1,7 @@
 import React from 'react';
-import AppBar from './navbar/AppBar';
-import SubjectTabs from './subjects/SubjectTabs';
-import Home from './Home';
+import AppBar from '../navbar/AppBar';
+import SubjectTabs from '../subjects/SubjectTabs';
+import Home from '../home/Home';
 import {
   BrowserRouter as Router,
   Switch,
