@@ -10,8 +10,8 @@ const linkStyle = {
 
 const ResourceCards = (props) => {
     
+    // only display resources that match the subject tab
     let resources = [];
-
     if (props.resources.length > 0) {
         resources = props.resources.filter(
             resource => resource.subject === props.subject.tab
@@ -22,7 +22,7 @@ const ResourceCards = (props) => {
         <React.Fragment>
             {resources.length > 0 ? resources.map(resource => {
                 return (
-                    <Card key={resource.id} style={{ marginTop: '2rem', minWidth: 310, maxWidth: 450 }}>
+                    <Card key={resource._id} style={{ marginTop: '2rem', minWidth: 310, maxWidth: 450 }}>
                         <Card.Header as="h5">
                             {resource.title} <Badge variant="secondary" pill>{resource.status}</Badge>
                         </Card.Header>
@@ -39,7 +39,7 @@ const ResourceCards = (props) => {
                                 Go to Resource
                             </Button>
                             /
-                            <EditResource id={resource.id}/>
+                            <EditResource id={resource._id}/>
                             /
                             <Button variant="link" style={linkStyle}>Delete</Button>
                         </Card.Footer>

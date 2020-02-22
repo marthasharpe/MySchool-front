@@ -1,43 +1,23 @@
 import {
-    SET_DATA, ADD_RESOURCE, ADD_SUBJECT, EDIT_RESOURCE
+    SET_SUBJECTS, SET_RESOURCES, ADD_RESOURCE, ADD_SUBJECT, EDIT_RESOURCE
 } from '../actions/actionTypes';
 
 const initialState = {
     subjects: [],
-    resources: [
-        {
-            id: "hijk",
-            title: "React for Beginners",
-            description: "Kent C. Dodds builds React from scratch.",
-            link: "https://egghead.io/courses/the-beginner-s-guide-to-react",
-            status: "Complete",
-            subject: "React"
-        },
-        {
-            id: "lmno",
-            title: "React Docs",
-            description: "Official documentation for React.",
-            link: "https://reactjs.org/docs/getting-started.html",
-            status: "In Progress",
-            subject: "React"
-        },
-        {
-            id: "qrst",
-            title: "Redux Docs",
-            description: "Official Redux documentation.",
-            link: "https://redux.js.org/",
-            status: "Todo",
-            subject: "Redux"
-        }
-    ]
+    resources: []
 };
 
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
-        case SET_DATA:
+        case SET_SUBJECTS:
             return {
                 ...state,
                 subjects: action.payload
+            }
+        case SET_RESOURCES:
+            return {
+                ...state,
+                resources: action.payload
             }
         case ADD_RESOURCE:
             return {

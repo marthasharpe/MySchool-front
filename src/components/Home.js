@@ -21,7 +21,7 @@ const Home = () => {
                 </Row>
                 <Row className="justify-content-center">
                     <h3 style={{textAlign: "center"}}>
-                        a.k.a <em>your</em> school.
+                        a.k.a. <em>your</em> school.
                     </h3>
                 </Row>
                 <Row style={{marginTop: 20}} className="justify-content-center">

@@ -3,13 +3,14 @@ import { Tabs, Tab, Row, Col } from 'react-bootstrap';
 import ResourceCards from '../resources/ResourceCards';
 import { connect } from 'react-redux';
 import NewSubject from './NewSubject';
-import { getData } from '../../actions/actionCreators';
+import { getSubjects, getResources } from '../../actions/actionCreators';
 
-const SubjectTabs = ({ getData, subjects }) => {
+const SubjectTabs = ({ getSubjects, getResources, subjects }) => {
 
     React.useEffect(() => {
-        getData();
-    }, [getData])
+        getSubjects();
+        getResources();
+    }, [getSubjects, getResources])
 
     return (
         <Tabs
@@ -50,7 +51,8 @@ const mapStateToProps = ({ subjects }) => ({
 })
 
 const mapDispatchToProps = ({
-    getData
+    getSubjects,
+    getResources
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SubjectTabs);

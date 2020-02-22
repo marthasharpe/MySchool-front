@@ -1,16 +1,16 @@
 import axios from 'axios';
 import {
-    SET_DATA, ADD_RESOURCE, ADD_SUBJECT, EDIT_RESOURCE
+    SET_SUBJECTS, SET_RESOURCES, ADD_RESOURCE, ADD_SUBJECT, EDIT_RESOURCE
 } from './actionTypes';
 
 const apiUrl = "https://floating-crag-05232.herokuapp.com"
 
-export const getData = () => {
+export const getSubjects = () => {
     return (dispatch) => {
         return axios.get(`${apiUrl}/subjects`)
             .then(response => {
                 console.log(response.data.subjects);
-                dispatch(setData(response.data.subjects));
+                dispatch(setSubjects(response.data.subjects));
             })
             .catch(error => {
                 throw(error);
@@ -18,10 +18,30 @@ export const getData = () => {
     }
 }
 
-export const setData = (subjects) => {
+export const setSubjects = (subjects) => {
     return {
-        type: SET_DATA,
+        type: SET_SUBJECTS,
         payload: subjects
+    }
+}
+
+export const getResources = () => {
+    return (dispatch) => {
+        return axios.get(`${apiUrl}/resources`)
+            .then(response => {
+                console.log(response.data.resources);
+                dispatch(setResources(response.data.resources));
+            })
+            .catch(error => {
+                throw(error);
+            })
+    }
+}
+
+export const setResources = (resources) => {
+    return {
+        type: SET_RESOURCES,
+        payload: resources
     }
 }
 
