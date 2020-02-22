@@ -1,18 +1,9 @@
 import {
-    ADD_RESOURCE, ADD_SUBJECT, EDIT_RESOURCE
-} from '../actions/actionCreators';
+    SET_DATA, ADD_RESOURCE, ADD_SUBJECT, EDIT_RESOURCE
+} from '../actions/actionTypes';
 
 const initialState = {
-    subjects: [
-        {
-            id: "abcd",
-            tab: "React"
-        },
-        {
-            id: "efgh",
-            tab: "Redux"
-        }
-    ],
+    subjects: [],
     resources: [
         {
             id: "hijk",
@@ -43,6 +34,11 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
+        case SET_DATA:
+            return {
+                ...state,
+                subjects: action.payload
+            }
         case ADD_RESOURCE:
             return {
                 ...state,

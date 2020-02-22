@@ -3,18 +3,23 @@ import { Tabs, Tab, Row, Col } from 'react-bootstrap';
 import ResourceCards from '../resources/ResourceCards';
 import { connect } from 'react-redux';
 import NewSubject from './NewSubject';
+import { getData } from '../../actions/actionCreators';
 
-const SubjectTabs = (props) => {
+const SubjectTabs = ({ getData, subjects }) => {
+
+    React.useEffect(() => {
+        getData();
+    }, [getData])
 
     return (
         <Tabs
             className="justify-content-center"
             style={{marginTop: '1rem'}}
             >
-            {props.subjects.length > 0 ? props.subjects.map(subject => {
+            {subjects.length > 0 ? subjects.map(subject => {
                 return (
                     <Tab
-                        key={subject.id}
+                        key={subject._id}
                         eventKey={subject.tab}
                         title={subject.tab}
                         >
@@ -40,8 +45,12 @@ const SubjectTabs = (props) => {
     )
 }
 
-const mapStateToProps = ({subjects}) => ({
+const mapStateToProps = ({ subjects }) => ({
     subjects
 })
 
-export default connect(mapStateToProps)(SubjectTabs);
+const mapDispatchToProps = ({
+    getData
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(SubjectTabs);

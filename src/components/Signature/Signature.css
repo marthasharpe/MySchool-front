@@ -1,0 +1,14 @@
+.signature-container {
+    margin-top: 2rem;
+}
+
+.name {
+    color: rgb(50, 50, 50);
+    margin: 0;
+    font-weight: bold;
+}
+
+.icon {
+    width: 1.5rem;
+    margin: 5px;
+}

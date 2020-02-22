@@ -1,6 +1,29 @@
-export const ADD_RESOURCE = 'ADD_RESOURCE';
-export const ADD_SUBJECT = 'ADD_SUBJECT';
-export const EDIT_RESOURCE = 'EDIT_RESOURCE';
+import axios from 'axios';
+import {
+    SET_DATA, ADD_RESOURCE, ADD_SUBJECT, EDIT_RESOURCE
+} from './actionTypes';
+
+const apiUrl = "https://floating-crag-05232.herokuapp.com"
+
+export const getData = () => {
+    return (dispatch) => {
+        return axios.get(`${apiUrl}/subjects`)
+            .then(response => {
+                console.log(response.data.subjects);
+                dispatch(setData(response.data.subjects));
+            })
+            .catch(error => {
+                throw(error);
+            })
+    }
+}
+
+export const setData = (subjects) => {
+    return {
+        type: SET_DATA,
+        payload: subjects
+    }
+}
 
 export const addResource = (info) => {
     return {
