@@ -45,12 +45,27 @@ export const setResources = (resources) => {
     }
 }
 
+export const postResource = (info) => {
+    return (dispatch) => {
+        return axios.post(`${apiUrl}/resources`, info)
+            .then(response => {
+                console.log(response.data.createdResource);
+                dispatch(addResource(response.data.createdResource));
+            })
+            .catch(error => {
+                throw(error);
+            })
+    }
+}
+
 export const addResource = (info) => {
     return {
         type: ADD_RESOURCE,
         payload: info
     }
 }
+
+
 
 export const addSubject = (info) => {
     return {
