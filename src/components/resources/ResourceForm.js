@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Form, Button, Container } from 'react-bootstrap';
-import { postResource, addResource, editResource } from '../../actions/actionCreators';
-import uuid from 'react-uuid';
+import { postResource, editResource } from '../../actions/actionCreators';
 
 const ResourceForm = (props) => {
 
@@ -128,7 +127,6 @@ const mapStateToProps = ({subjects, resources}) => ({
 })
 
 const mapDispatchToProps = {
-    // addResource,
     // editResource
     postResource
 }

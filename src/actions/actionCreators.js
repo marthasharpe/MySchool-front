@@ -65,7 +65,18 @@ export const addResource = (info) => {
     }
 }
 
-
+export const postSubject = (info) => {
+    return (dispatch) => {
+        return axios.post(`${apiUrl}/subjects`, info)
+            .then(response => {
+                console.log(response.data);
+                dispatch(addSubject(response.data.newSubject));
+            })
+            .catch(error => {
+                throw(error);
+            })
+    }
+}
 
 export const addSubject = (info) => {
     return {

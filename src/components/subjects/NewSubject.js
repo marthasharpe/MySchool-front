@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addSubject } from '../../actions/actionCreators';
+import { postSubject } from '../../actions/actionCreators';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
-import uuid from 'react-uuid';
 
 const NewSubject = (props) => {
     const [info, setInfo] = React.useState({
@@ -18,7 +17,7 @@ const NewSubject = (props) => {
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        props.addSubject({id: uuid(), ...info});
+        props.postSubject(info);
         setInfo({
             tab: '',
         })
@@ -49,7 +48,7 @@ const NewSubject = (props) => {
 }
 
 const mapDispatchToProps = {
-    addSubject
+    postSubject
 }
 
 export default connect(null, mapDispatchToProps)(NewSubject);
