@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Modal } from 'react-bootstrap';
-import ResourceForm from './ResourceForm';
+import ResourceForm from './resourceForm/ResourceForm';
 
 const linkStyle = {
     lineHeight: 1,

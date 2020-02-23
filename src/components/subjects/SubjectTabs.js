@@ -1,9 +1,9 @@
 import React from 'react';
 import { Tabs, Tab, Row, Col } from 'react-bootstrap';
-import ResourceCards from '../resources/ResourceCards';
 import { connect } from 'react-redux';
+import ResourceCards from '../resources/resourceCards/ResourceCards';
 import NewSubject from './NewSubject';
-import { getSubjects, getResources } from '../../actions/actionCreators';
+import { getSubjects, getResources } from '../../store/actions/actionCreators';
 
 const SubjectTabs = ({ getSubjects, getResources, subjects }) => {
 

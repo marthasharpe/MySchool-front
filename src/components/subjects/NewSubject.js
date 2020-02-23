@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { postSubject } from '../../actions/actionCreators';
+import { postSubject } from '../../store/actions/actionCreators';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 
 const NewSubject = (props) => {
