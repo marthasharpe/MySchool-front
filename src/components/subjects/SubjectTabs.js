@@ -18,7 +18,9 @@ const SubjectTabs = ({ getSubjects, getResources, subjects }) => {
             className="justify-content-center"
             style={{marginTop: '1rem'}}
             >
-            {subjects.length > 0 ? subjects.map(subject => {
+            {subjects.length > 0 ? subjects.sort(
+                (a, b) => a.tab > b.tab ? 1 : -1)
+                .map(subject => {
                 return (
                     <Tab
                         key={subject._id}
