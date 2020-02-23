@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {
-    SET_RESOURCES, ADD_RESOURCE
+    SET_RESOURCES, ADD_RESOURCE, DELETE_RESOURCE
 } from './actionTypes';
 
 const apiUrl = "https://floating-crag-05232.herokuapp.com"
@@ -42,5 +42,25 @@ export const addResource = (info) => {
     return {
         type: ADD_RESOURCE,
         payload: info
+    }
+}
+
+export const deleteResourceRequest = (id) => {
+    return (dispatch) => {
+        return axios.delete(`${apiUrl}/resources/${id}`)
+            .then(response => {
+                console.log(response);
+                dispatch(deleteResource(id));
+            })
+            .catch(error => {
+                throw(error);
+            })
+    }
+}
+
+export const deleteResource = (id) => {
+    return {
+        type: DELETE_RESOURCE,
+        payload: id
     }
 }

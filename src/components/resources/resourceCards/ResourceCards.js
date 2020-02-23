@@ -3,6 +3,7 @@ import { Card, Badge, Button, Container } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import EditResource from '../EditResource';
 import { deleteSubjectRequest } from '../../../store/actions/subjectActions';
+import { deleteResourceRequest } from '../../../store/actions/resourceActions';
 
 const linkStyle = {
     lineHeight: 1,
@@ -42,14 +43,25 @@ const ResourceCards = (props) => {
                             /
                             <EditResource id={resource._id}/>
                             /
-                            <Button variant="link" style={linkStyle}>Delete</Button>
+                            <Button
+                                onClick={() => props.deleteResourceRequest(resource._id)}
+                                variant="link"
+                                style={linkStyle}
+                                >
+                                Delete
+                            </Button>
                         </Card.Footer>
                     </Card>
                 )
             }) : (
                 <Container>
                     <h5 style={{marginTop: 50, textAlign: "center"}}>You have no resources saved.</h5>
-                    <Button onClick={() => props.deleteSubjectRequest(props.subject._id)} variant="success" block>Delete Subject</Button>
+                    <Button
+                        onClick={() => props.deleteSubjectRequest(props.subject._id)}
+                        variant="success" block
+                        >
+                        Delete Subject
+                    </Button>
                 </Container>
             )}
         </React.Fragment>
@@ -61,7 +73,8 @@ const mapStateToProps = ({resources}) => ({
 })
 
 const mapDispatchToProps = ({
-    deleteSubjectRequest
+    deleteSubjectRequest,
+    deleteResourceRequest
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ResourceCards);

@@ -1,5 +1,5 @@
 import {
-    SET_RESOURCES, ADD_RESOURCE
+    SET_RESOURCES, ADD_RESOURCE, DELETE_RESOURCE
 } from '../actions/actionTypes';
 
 const resourceReducer = (state = [], action) => {
@@ -8,6 +8,10 @@ const resourceReducer = (state = [], action) => {
             return state.concat(action.payload)
         case ADD_RESOURCE:
             return state.concat(action.payload)
+        case DELETE_RESOURCE:
+            return state.filter(subject => {
+                return subject._id !== action.payload
+            })
         default:
             return state
     }
