@@ -18,6 +18,18 @@ const SubjectTabs = ({ getSubjects, getResources, subjects }) => {
             className="justify-content-center"
             style={{marginTop: '1rem'}}
             >
+            <Tab
+                key="Dashboard"
+                eventKey="Dashboard"
+                title="Dashboard"
+                >
+                <h1>Dashboard</h1>
+                <ul>
+                    <li>get resources by status</li>
+                    <li>todo list?</li>
+                    <li>calendar?</li>
+                </ul>
+            </Tab>
             {subjects.length > 0 ? subjects.sort(
                 (a, b) => a.tab > b.tab ? 1 : -1)
                 .map(subject => {
