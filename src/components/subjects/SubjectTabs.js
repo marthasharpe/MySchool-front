@@ -3,7 +3,8 @@ import { Tabs, Tab, Row, Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import ResourceCards from '../resources/resourceCards/ResourceCards';
 import NewSubject from './NewSubject';
-import { getSubjects, getResources } from '../../store/actions/actionCreators';
+import { getSubjects } from '../../store/actions/subjectActions';
+import { getResources } from '../../store/actions/resourceActions';
 
 const SubjectTabs = ({ getSubjects, getResources, subjects }) => {
 

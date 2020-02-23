@@ -2,4 +2,4 @@ export const SET_SUBJECTS = 'SET_SUBJECTS';
 export const SET_RESOURCES = 'SET_RESOURCES';
 export const ADD_RESOURCE = 'ADD_RESOURCE';
 export const ADD_SUBJECT = 'ADD_SUBJECT';
-export const EDIT_RESOURCE = 'EDIT_RESOURCE';
+export const DELETE_SUBJECT = 'DELETE_SUBJECT';
