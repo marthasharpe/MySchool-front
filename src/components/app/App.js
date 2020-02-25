@@ -1,7 +1,8 @@
 import React from 'react';
-import AppBar from '../navbar/AppBar';
-import SubjectTabs from '../subjects/SubjectTabs';
+import AppBar from '../appbar/AppBar';
+import SubjectTabs from '../subjectTabs/SubjectTabs';
 import Home from '../home/Home';
+import AuthForm from '../authForm/AuthForm';
 import {
   BrowserRouter as Router,
   Switch,
@@ -15,6 +16,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home}/>
         <Route path="/subjects" component={SubjectTabs} />
+        <Route path="/login" component={AuthForm} />
       </Switch>
     </Router>
   );

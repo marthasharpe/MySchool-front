@@ -1,9 +1,10 @@
 import React from 'react';
 import { Nav } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-import NewResource from '../resources/resourceModal/ResourceModal';
+import NewResource from '../resourceModal/ResourceModal';
+import './SideTabs.css';
 
-const LoggedInNavs = () => {
+const SideTabs = () => {
     return (
         <Nav>
             <NewResource />
@@ -12,4 +13,4 @@ const LoggedInNavs = () => {
     )
 }
 
-export default LoggedInNavs;
+export default SideTabs;

@@ -2,10 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { postSubject } from '../../store/actions/subjectActions';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import './NewSubject.css';
 
 const NewSubject = (props) => {
     const [info, setInfo] = React.useState({
-        tab: '',
+        name: '',
     })
     
     const handleChange = (e) => {
@@ -19,12 +20,12 @@ const NewSubject = (props) => {
         e.preventDefault();
         props.postSubject(info);
         setInfo({
-            tab: '',
+            name: '',
         })
     }
     
     return (
-        <Container style={{marginTop: 50}}>
+        <Container className="newSubject-container">
             <Row className="justify-content-center">
                 <Col md={{span: 8}}>
                     <Form onSubmit={handleSubmit}>
@@ -32,8 +33,8 @@ const NewSubject = (props) => {
                             <Form.Label>Subject Name</Form.Label>
                             <Form.Control
                                 type="text"
-                                name="tab"
-                                value={info.tab}
+                                name="name"
+                                value={info.name}
                                 placeholder="name your subject"
                                 onChange={handleChange}
                                 required

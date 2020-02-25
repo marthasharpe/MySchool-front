@@ -2,8 +2,8 @@ import React from 'react';
 import { Card, Badge, Button, Container } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import EditResource from '../EditResource';
-import { deleteSubjectRequest } from '../../../store/actions/subjectActions';
-import { deleteResourceRequest } from '../../../store/actions/resourceActions';
+import { deleteSubjectRequest } from '../../store/actions/subjectActions';
+import { deleteResourceRequest } from '../../store/actions/resourceActions';
 
 const linkStyle = {
     lineHeight: 1,

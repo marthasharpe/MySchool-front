@@ -1,5 +1,7 @@
 .signature-container {
     margin-top: 2rem;
+    background-color: rgb(255, 255, 255, 0.4);
+    width: 100%;
 }
 
 .name {

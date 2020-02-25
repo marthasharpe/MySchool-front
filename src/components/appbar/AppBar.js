@@ -1,12 +1,12 @@
 import React from 'react';
-import Navbar from 'react-bootstrap/Navbar';
+import { Navbar, Nav } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-import LoggedInNavs from './LoggedInNavs';
 import icon from '../../openbook.png';
+import './AppBar.css';
 
 const AppBar = () => {
     return (
-        <Navbar bg="dark" variant="dark" sticky="top">
+        <Navbar variant="dark" sticky="top">
             <Navbar.Brand>
                 <img
                     src={icon}
@@ -18,7 +18,10 @@ const AppBar = () => {
                 <NavLink to="/" className="link">MySchool</NavLink>
             </Navbar.Brand>
             <Navbar.Collapse className="justify-content-end">
-            <LoggedInNavs />
+                <Nav>
+                    <NavLink to="/login" className="link">Log In</NavLink>
+                    <NavLink to="/signup" className="link">New User</NavLink>
+                </Nav>
             </Navbar.Collapse>
         </Navbar>
     )

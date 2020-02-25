@@ -1,10 +1,12 @@
 import React from 'react';
-import { Tabs, Tab, Row, Col } from 'react-bootstrap';
+import { Tabs, Tab, Row, Col, Container } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import ResourceCards from '../resources/resourceCards/ResourceCards';
-import NewSubject from './NewSubject';
+import ResourceCards from '../resourceCards/ResourceCards';
+import NewSubject from '../newSubject/NewSubject';
+import Dashboard from '../dashboard/Dashboard';
 import { getSubjects } from '../../store/actions/subjectActions';
 import { getResources } from '../../store/actions/resourceActions';
+import './SubjectTabs.css';
 
 const SubjectTabs = ({ getSubjects, getResources, subjects }) => {
 
@@ -14,6 +16,7 @@ const SubjectTabs = ({ getSubjects, getResources, subjects }) => {
     }, [getSubjects, getResources])
 
     return (
+        <Container>
         <Tabs
             className="justify-content-center"
             style={{marginTop: '1rem'}}
@@ -23,21 +26,16 @@ const SubjectTabs = ({ getSubjects, getResources, subjects }) => {
                 eventKey="Dashboard"
                 title="Dashboard"
                 >
-                <h1>Dashboard</h1>
-                <ul>
-                    <li>get resources by status</li>
-                    <li>todo list?</li>
-                    <li>calendar?</li>
-                </ul>
+                <Dashboard />
             </Tab>
             {subjects.length > 0 ? subjects.sort(
-                (a, b) => a.tab > b.tab ? 1 : -1)
+                (a, b) => a.name > b.name ? 1 : -1)
                 .map(subject => {
                 return (
                     <Tab
                         key={subject._id}
-                        eventKey={subject.tab}
-                        title={subject.tab}
+                        eventKey={subject.name}
+                        title={subject.name}
                         >
                         <Row className="justify-content-center">                        
                             <Col md={{span: 5}}>
@@ -58,6 +56,7 @@ const SubjectTabs = ({ getSubjects, getResources, subjects }) => {
                 <NewSubject />
             </Tab>
         </Tabs>
+        </Container>
     )
 }
 
