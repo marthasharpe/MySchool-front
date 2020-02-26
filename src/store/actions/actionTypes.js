@@ -4,4 +4,5 @@ export const ADD_RESOURCE = 'ADD_RESOURCE';
 export const ADD_SUBJECT = 'ADD_SUBJECT';
 export const DELETE_SUBJECT = 'DELETE_SUBJECT';
 export const DELETE_RESOURCE = 'DELETE_RESOURCE';
-export const LOGIN_USER = 'LOGIN_USER';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAILURE = 'LOGIN_FAILURE';

@@ -9,7 +9,7 @@ export default createStore(
     combineReducers({
         resources: resourceReducer,
         subjects: subjectReducer,
-        user: authReducer
+        auth: authReducer
     }),
     composeWithDevTools(
         applyMiddleware(thunk)

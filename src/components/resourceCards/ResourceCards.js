@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import EditResource from '../EditResource';
 import { deleteSubjectRequest } from '../../store/actions/subjectActions';
 import { deleteResourceRequest } from '../../store/actions/resourceActions';
+import './ResourceCards.css';
 
 const linkStyle = {
     lineHeight: 1,
@@ -12,21 +13,23 @@ const linkStyle = {
 
 const ResourceCards = (props) => {
     
-    // only display resources that match the subject tab
+    // only display resources that match the subject name
     let resources = [];
     if (props.resources.length > 0) {
         resources = props.resources.filter(
-            resource => resource.subject === props.subject.tab
+            resource => resource.subject === props.subject.name
         )
     }
     
     return (
-        <React.Fragment>
+        <Container className="resources-container">
             {resources.length > 0 ? resources.map(resource => {
                 return (
-                    <Card key={resource._id} style={{ marginTop: '2rem', minWidth: 310, maxWidth: 450 }}>
+                    <Card key={resource._id} className="resource-cards">
                         <Card.Header as="h5">
-                            {resource.title} <Badge variant="secondary" pill>{resource.status}</Badge>
+                                {resource.title} <Badge variant="secondary" pill>
+                                    {resource.status}
+                                </Badge>
                         </Card.Header>
                         <Card.Body>
                             <Card.Text>{resource.description}</Card.Text>
@@ -54,7 +57,7 @@ const ResourceCards = (props) => {
                     </Card>
                 )
             }) : (
-                <Container>
+                <React.Fragment>
                     <h5 style={{marginTop: 50, textAlign: "center"}}>You have no resources saved.</h5>
                     <Button
                         onClick={() => props.deleteSubjectRequest(props.subject._id)}
@@ -62,9 +65,9 @@ const ResourceCards = (props) => {
                         >
                         Delete Subject
                     </Button>
-                </Container>
+                </React.Fragment>
             )}
-        </React.Fragment>
+        </Container>
     )
 }
 

@@ -8,7 +8,8 @@ const SideTabs = () => {
     return (
         <Nav>
             <NewResource />
-            <NavLink to="/subjects" className="link">Subjects</NavLink>
+            <NavLink to="/curriculum" className="link">Curriculum</NavLink>
+            <NavLink to="/planner" className="link">Planner</NavLink>
         </Nav>
     )
 }

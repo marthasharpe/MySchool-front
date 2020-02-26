@@ -1,7 +1,9 @@
 import axios from 'axios';
 import {
-    LOGIN_USER
+    LOGIN_SUCCESS, LOGIN_FAILURE
 } from './actionTypes';
+// import { getResources } from './resourceActions';
+// import { getSubjects } from './subjectActions';
 
 const apiUrl = "https://floating-crag-05232.herokuapp.com"
 
@@ -9,18 +11,26 @@ export const authLogin = (authInfo) => {
     return (dispatch) => {
         return axios.post(`${apiUrl}/users/login`, authInfo)
             .then(response => {
-                console.log(response);
-                dispatch(loginUser(response.data));
+                dispatch(loginSuccess(response.data.token));
+                // dispatch(getSubjects());
+                // dispatch(getResources());
             })
             .catch(error => {
-                throw(error);
+                dispatch(loginFailure());
             })
     }
 }
 
-export const loginUser = (data) => {
+export const loginSuccess = (data) => {
     return {
-        type: LOGIN_USER,
+        type: LOGIN_SUCCESS,
         payload: data
+    }
+}
+
+export const loginFailure = () => {
+    return {
+        type: LOGIN_FAILURE,
+        payload: 'Invalid email or password.'
     }
 }
