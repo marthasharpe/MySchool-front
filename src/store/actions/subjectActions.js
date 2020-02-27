@@ -4,13 +4,14 @@ export const ADD_SUBJECT = 'ADD_SUBJECT';
 export const DELETE_SUBJECT = 'DELETE_SUBJECT';
 
 const apiUrl = "https://floating-crag-05232.herokuapp.com"
-
-export const getSubjects = (token) => {
-    let config = {
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
+const token = sessionStorage.getItem('token');
+let config = {
+        headers: {
+            'Authorization': `Bearer ${token}`
         }
+    }
+
+export const getSubjects = () => {
     return (dispatch) => {
         return axios.get(`${apiUrl}/subjects`, config)
             .then(response => {
@@ -32,7 +33,7 @@ export const setSubjects = (subjects) => {
 
 export const postSubject = (info) => {
     return (dispatch) => {
-        return axios.post(`${apiUrl}/subjects`, info)
+        return axios.post(`${apiUrl}/subjects`, info, config)
             .then(response => {
                 console.log(response.data);
                 dispatch(addSubject(response.data.newSubject));
@@ -52,7 +53,7 @@ export const addSubject = (info) => {
 
 export const deleteSubjectRequest = (id) => {
     return (dispatch) => {
-        return axios.delete(`${apiUrl}/subjects/${id}`)
+        return axios.delete(`${apiUrl}/subjects/${id}`, config)
             .then(response => {
                 console.log(response);
                 dispatch(deleteSubject(id));

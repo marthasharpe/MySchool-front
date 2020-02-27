@@ -20,6 +20,10 @@ const ResourceCards = (props) => {
             resource => resource.subject === props.subject.name
         )
     }
+
+    const handleDeleteSubject = () => {
+        props.deleteSubjectRequest(props.subject._id);
+    }
     
     return (
         <Container className="resources-container">
@@ -68,7 +72,7 @@ const ResourceCards = (props) => {
                     <h5 style={{marginTop: 50, textAlign: "center"}}>You have no resources saved.</h5>
                     <Row className="justify-content-center">
                         <Button
-                            onClick={() => props.deleteSubjectRequest(props.subject._id)}
+                            onClick={handleDeleteSubject}
                             variant="success"
                             >
                             Delete Subject
