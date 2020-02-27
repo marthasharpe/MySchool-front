@@ -24,10 +24,12 @@ const AuthForm = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         props.authLogin(authInfo);
+        // reset local state
         setAuthInfo({
             email: '',
             password: ''
         })
+        // redirect to home
         history.push('/');
     }
 
