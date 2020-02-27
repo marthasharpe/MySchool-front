@@ -1,3 +1,9 @@
 .auth-container {
+    padding: 1rem;
+    margin-top: 50px;
     background-color: rgb(255, 255, 255, 0.7);
+}
+
+.auth-form {
+    padding: 3rem;
 }

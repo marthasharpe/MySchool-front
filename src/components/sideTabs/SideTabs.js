@@ -1,13 +1,13 @@
 import React from 'react';
 import { Nav } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-import NewResource from '../resourceModal/ResourceModal';
+import ResourceModal from '../resourceModal/ResourceModal';
 import './SideTabs.css';
 
 const SideTabs = () => {
     return (
         <Nav>
-            <NewResource />
+            <ResourceModal />
             <NavLink to="/curriculum" className="link">Curriculum</NavLink>
             <NavLink to="/planner" className="link">Planner</NavLink>
         </Nav>

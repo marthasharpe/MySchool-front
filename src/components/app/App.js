@@ -14,7 +14,7 @@ import {
 
 const App = ({ getResources, getSubjects }) => {
 
-  const token = localStorage.getItem('token');
+  const token = sessionStorage.getItem('token');
   if (token) {
     getSubjects(token);
     getResources(token);

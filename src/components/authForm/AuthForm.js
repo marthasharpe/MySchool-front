@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { authLogin } from '../../store/actions/authActions';
-import './AuthForm';
+import './AuthForm.css';
 
 const AuthForm = (props) => {
 
@@ -29,7 +29,8 @@ const AuthForm = (props) => {
 
     return (
         <Container className="auth-container">
-            <Form onSubmit={handleSubmit}>
+            <Form className="auth-form" onSubmit={handleSubmit}>
+                <h2>Login</h2>
                 <Form.Group>
                     <Form.Label>Email</Form.Label>
                     <Form.Control
@@ -57,10 +58,6 @@ const AuthForm = (props) => {
         </Container>
     )
 }
-
-// const mapStateToProps = ({subjects, resources}) => ({
-//     subjects, resources
-// })
 
 const mapDispatchToProps = {
     authLogin

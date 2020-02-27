@@ -1,11 +1,19 @@
 import React from 'react';
-import { Navbar, Nav } from 'react-bootstrap';
+import { Navbar, Nav, Button } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import icon from '../../openbook.png';
+import { userLogout } from '../../store/actions/authActions';
+import ResourceModal from '../resourceModal/ResourceModal';
 import './AppBar.css';
 
 const AppBar = (props) => {
+
+    const handleLogout = () => {
+        props.userLogout();
+        sessionStorage.clear();
+    }
+
     return (
         <Navbar variant="dark" sticky="top">
             <Navbar.Brand>
@@ -21,7 +29,8 @@ const AppBar = (props) => {
             <Navbar.Collapse className="justify-content-end">
                 {props.auth.loggedIn ? (
                     <Nav>
-                        <NavLink to="/logout" className="link">Log Out</NavLink>
+                        <ResourceModal />
+                        <Button variant="link" onClick={handleLogout} className="link">Log Out</Button>
                     </Nav>                    
                 ) : (
                     <Nav>
@@ -38,4 +47,8 @@ const mapStateToProps = ({ auth }) => ({
     auth
 })
 
-export default connect(mapStateToProps)(AppBar);
+const mapDispatchToProps = ({
+    userLogout
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(AppBar);

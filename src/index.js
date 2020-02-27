@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import store from './store/store';
 import { LOGIN_SUCCESS } from './store/actions/actionTypes';
 
-const token = localStorage.getItem('token');
+const token = sessionStorage.getItem('token');
 if (token) {
     store.dispatch({ type: LOGIN_SUCCESS })
 }

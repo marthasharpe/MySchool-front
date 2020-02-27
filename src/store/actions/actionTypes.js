@@ -6,3 +6,4 @@ export const DELETE_SUBJECT = 'DELETE_SUBJECT';
 export const DELETE_RESOURCE = 'DELETE_RESOURCE';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
+export const USER_LOGOUT = 'USER_LOGIN';

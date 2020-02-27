@@ -3,7 +3,7 @@ import { Button, Modal } from 'react-bootstrap';
 import ResourceForm from '../resourceForm/ResourceForm';
 import './ResourceModal.css';
 
-const NewResource = () => {
+const ResourceModal = () => {
     
     // modal controls
     const [show, setShow] = React.useState(false);
@@ -28,4 +28,4 @@ const NewResource = () => {
     )
 }
 
-export default NewResource;
+export default ResourceModal;
