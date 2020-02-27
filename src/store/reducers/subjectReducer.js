@@ -1,6 +1,6 @@
 import {
     SET_SUBJECTS, ADD_SUBJECT, DELETE_SUBJECT
-} from '../actions/actionTypes';
+} from '../actions/subjectActions';
 
 const subjectReducer = (state = [], action) => {
     switch (action.type) {

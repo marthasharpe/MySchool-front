@@ -1,9 +1,0 @@
-export const SET_SUBJECTS = 'SET_SUBJECTS';
-export const SET_RESOURCES = 'SET_RESOURCES';
-export const ADD_RESOURCE = 'ADD_RESOURCE';
-export const ADD_SUBJECT = 'ADD_SUBJECT';
-export const DELETE_SUBJECT = 'DELETE_SUBJECT';
-export const DELETE_RESOURCE = 'DELETE_RESOURCE';
-export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-export const LOGIN_FAILURE = 'LOGIN_FAILURE';
-export const USER_LOGOUT = 'USER_LOGIN';

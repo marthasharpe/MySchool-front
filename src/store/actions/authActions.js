@@ -1,12 +1,14 @@
 import axios from 'axios';
-import {
-    LOGIN_SUCCESS, LOGIN_FAILURE, USER_LOGOUT
-} from './actionTypes';
+export const LOGIN_REQUEST = 'LOGIN_REQUEST';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAILURE = 'LOGIN_FAILURE';
+export const USER_LOGOUT = 'USER_LOGIN';
 
 const apiUrl = "https://floating-crag-05232.herokuapp.com"
 
 export const authLogin = (authInfo) => {
     return (dispatch) => {
+        dispatch(loginRequest());
         return axios.post(`${apiUrl}/users/login`, authInfo)
             .then(response => {
                 dispatch(loginSuccess(response.data.token));
@@ -15,6 +17,12 @@ export const authLogin = (authInfo) => {
             .catch(error => {
                 dispatch(loginFailure());
             })
+    }
+}
+
+export const loginRequest = () => {
+    return {
+        type: LOGIN_REQUEST
     }
 }
 

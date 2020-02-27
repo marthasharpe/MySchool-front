@@ -5,12 +5,6 @@ import App from './components/app/App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Provider } from 'react-redux';
 import store from './store/store';
-import { LOGIN_SUCCESS } from './store/actions/actionTypes';
-
-const token = sessionStorage.getItem('token');
-if (token) {
-    store.dispatch({ type: LOGIN_SUCCESS })
-}
 
 ReactDOM.render(
     <Provider store={store}>

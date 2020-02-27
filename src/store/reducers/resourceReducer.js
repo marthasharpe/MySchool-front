@@ -1,6 +1,6 @@
 import {
     SET_RESOURCES, ADD_RESOURCE, DELETE_RESOURCE
-} from '../actions/actionTypes';
+} from '../actions/resourceActions';
 
 const resourceReducer = (state = [], action) => {
     switch (action.type) {

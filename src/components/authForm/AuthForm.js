@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { authLogin } from '../../store/actions/authActions';
 import './AuthForm.css';
@@ -18,6 +19,8 @@ const AuthForm = (props) => {
         })
     }
 
+    let history = useHistory();
+
     const handleSubmit = (e) => {
         e.preventDefault();
         props.authLogin(authInfo);
@@ -25,6 +28,7 @@ const AuthForm = (props) => {
             email: '',
             password: ''
         })
+        history.push('/');
     }
 
     return (

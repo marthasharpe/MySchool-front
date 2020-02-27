@@ -1,7 +1,7 @@
 import axios from 'axios';
-import {
-    SET_SUBJECTS, ADD_SUBJECT, DELETE_SUBJECT
-} from './actionTypes';
+export const SET_SUBJECTS = 'SET_SUBJECTS';
+export const ADD_SUBJECT = 'ADD_SUBJECT';
+export const DELETE_SUBJECT = 'DELETE_SUBJECT';
 
 const apiUrl = "https://floating-crag-05232.herokuapp.com"
 

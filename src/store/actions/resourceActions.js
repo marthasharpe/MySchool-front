@@ -1,7 +1,7 @@
 import axios from 'axios';
-import {
-    SET_RESOURCES, ADD_RESOURCE, DELETE_RESOURCE
-} from './actionTypes';
+export const SET_RESOURCES = 'SET_RESOURCES';
+export const ADD_RESOURCE = 'ADD_RESOURCE';
+export const DELETE_RESOURCE = 'DELETE_RESOURCE';
 
 const apiUrl = "https://floating-crag-05232.herokuapp.com"
 
