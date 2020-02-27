@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar, Nav, Button } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import icon from '../../openbook.png';
 import { userLogout } from '../../store/actions/authActions';
@@ -9,9 +9,12 @@ import './AppBar.css';
 
 const AppBar = (props) => {
 
+    let history = useHistory();
+
     const handleLogout = () => {
         props.userLogout();
         sessionStorage.clear();
+        history.push('/');
     }
 
     return (
