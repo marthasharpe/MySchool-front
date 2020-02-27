@@ -4,13 +4,14 @@ export const ADD_RESOURCE = 'ADD_RESOURCE';
 export const DELETE_RESOURCE = 'DELETE_RESOURCE';
 
 const apiUrl = "https://floating-crag-05232.herokuapp.com"
-
-export const getResources = (token) => {
-    let config = {
+const token = sessionStorage.getItem('token');
+let config = {
         headers: {
             'Authorization': `Bearer ${token}`
         }
     }
+
+export const getResources = () => {
     return (dispatch) => {
         return axios.get(`${apiUrl}/resources`, config)
             .then(response => {
@@ -32,7 +33,7 @@ export const setResources = (resources) => {
 
 export const postResource = (info) => {
     return (dispatch) => {
-        return axios.post(`${apiUrl}/resources`, info)
+        return axios.post(`${apiUrl}/resources`, info, config)
             .then(response => {
                 console.log(response.data.createdResource);
                 dispatch(addResource(response.data.createdResource));
@@ -52,7 +53,7 @@ export const addResource = (info) => {
 
 export const deleteResourceRequest = (id) => {
     return (dispatch) => {
-        return axios.delete(`${apiUrl}/resources/${id}`)
+        return axios.delete(`${apiUrl}/resources/${id}`, config)
             .then(response => {
                 console.log(response);
                 dispatch(deleteResource(id));

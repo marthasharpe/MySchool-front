@@ -13,19 +13,6 @@ const ResourceForm = (props) => {
         status: '',
     })
 
-    React.useEffect(() => {
-        if (props.id) {
-            let resource = props.resources.find(resource => resource.id === props.id)
-            setInfo({
-                title: resource.title,
-                description: resource.description,
-                link: resource.link,
-                subject: resource.subject,
-                status: resource.status,      
-            })
-        }
-    }, [props.id, props.resources])
-
     const handleChange = (e) => {
         setInfo({
             ...info,
@@ -79,7 +66,7 @@ const ResourceForm = (props) => {
                     <Form.Label>Subject</Form.Label>
                     <Form.Control as="select" name="subject" onChange={handleChange}>
                         <option value="">Choose a Subject</option>
-                        {props.subjects.map(subject => <option key={subject.tab} value={subject.tab}>{subject.tab}</option>)}
+                        {props.subjects.map(subject => <option key={subject.name} value={subject.name}>{subject.name}</option>)}
                     </Form.Control>
                 </Form.Group>
                 <Form.Label>Status</Form.Label>
