@@ -3,22 +3,13 @@ import AppBar from '../appbar/AppBar';
 import SubjectTabs from '../subjectTabs/SubjectTabs';
 import Home from '../home/Home';
 import AuthForm from '../authForm/AuthForm';
-import { connect } from 'react-redux';
-import { getSubjects } from '../../store/actions/subjectActions';
-import { getResources } from '../../store/actions/resourceActions';
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
 
-const App = (props) => {
-
-  const token = sessionStorage.getItem('token');
-  if (token) {
-    props.getSubjects(token);
-    props.getResources(token);
-  }
+const App = () => {
 
   return (
     <Router>
@@ -32,9 +23,4 @@ const App = (props) => {
   );
 }
 
-const mapDispatchToProps = ({
-  getSubjects,
-  getResources
-})
-
-export default connect(null, mapDispatchToProps)(App);
+export default App;

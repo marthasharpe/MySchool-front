@@ -33,7 +33,13 @@ const AppBar = (props) => {
                 {props.auth.loggedIn ? (
                     <Nav>
                         <ResourceModal />
-                        <Button variant="link" onClick={handleLogout} id="logout">Log Out</Button>
+                        <Button
+                            variant="link"
+                            onClick={handleLogout}
+                            id="logout"
+                            >
+                            Log Out
+                        </Button>
                     </Nav>                    
                 ) : (
                     <Nav>
