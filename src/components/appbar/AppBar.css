@@ -1,3 +1,15 @@
 .navbar {
     border-bottom: solid 1px rgb(255, 255, 255, 0.5);
 }
+
+#logout {
+    text-decoration: none;
+    color: white;
+    padding: 0 10px;
+    line-height: 1;
+}
+
+#logout:hover {
+    text-decoration: none;
+    color: rgba(255,255,255,.5);
+}

@@ -36,7 +36,6 @@ const ResourceForm = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         props.postResource(info);
-        // props.id ? props.editResource(props.id, info) : props.addResource({id: uuid(), ...info})
         props.handleClose();
     }
     
@@ -127,7 +126,6 @@ const mapStateToProps = ({subjects, resources}) => ({
 })
 
 const mapDispatchToProps = {
-    // editResource
     postResource
 }
 

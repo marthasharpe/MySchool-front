@@ -1,12 +1,12 @@
 .resources-container {
-    padding-top: 50px;
+    padding-top: 1rem;
     background-color: rgb(255, 255, 255, 0.7);
     height: 500px;
     width: 720px;
 }
 
 .resource-cards {
-    margin-top: '2rem';
+    margin: 2rem;
     min-width: 310;
     max-Width: 450;
 }

@@ -9,24 +9,24 @@ import { getResources } from '../../store/actions/resourceActions';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
+  Route
 } from "react-router-dom";
 
-const App = ({ getResources, getSubjects }) => {
+const App = (props) => {
 
   const token = sessionStorage.getItem('token');
   if (token) {
-    getSubjects(token);
-    getResources(token);
+    props.getSubjects(token);
+    props.getResources(token);
   }
 
   return (
     <Router>
       <AppBar />
       <Switch>
-        <Route exact path="/" component={Home}/>
-        <Route path="/subjects" component={SubjectTabs} />
-        <Route path="/login" component={AuthForm} />
+        <Route exact path="/"><Home /></Route>
+        <Route path="/subjects"><SubjectTabs /></Route>
+        <Route path="/login"><AuthForm /></Route>
       </Switch>
     </Router>
   );

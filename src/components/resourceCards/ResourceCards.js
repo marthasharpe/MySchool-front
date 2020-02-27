@@ -1,7 +1,7 @@
 import React from 'react';
-import { Card, Badge, Button, Container } from 'react-bootstrap';
+import { Card, Badge, Button, Container, Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import EditResource from '../EditResource';
+// import EditResource from '../EditResource';
 import { deleteSubjectRequest } from '../../store/actions/subjectActions';
 import { deleteResourceRequest } from '../../store/actions/resourceActions';
 import './ResourceCards.css';
@@ -44,7 +44,14 @@ const ResourceCards = (props) => {
                                 Go to Resource
                             </Button>
                             /
-                            <EditResource id={resource._id}/>
+                            {/* <EditResource id={resource._id}/> */}
+                            <Button
+                                onClick={() => props.deleteResourceRequest(resource._id)}
+                                variant="link"
+                                style={linkStyle}
+                                >
+                                Edit
+                            </Button>
                             /
                             <Button
                                 onClick={() => props.deleteResourceRequest(resource._id)}
@@ -59,12 +66,14 @@ const ResourceCards = (props) => {
             }) : (
                 <React.Fragment>
                     <h5 style={{marginTop: 50, textAlign: "center"}}>You have no resources saved.</h5>
-                    <Button
-                        onClick={() => props.deleteSubjectRequest(props.subject._id)}
-                        variant="success" block
-                        >
-                        Delete Subject
-                    </Button>
+                    <Row className="justify-content-center">
+                        <Button
+                            onClick={() => props.deleteSubjectRequest(props.subject._id)}
+                            variant="success"
+                            >
+                            Delete Subject
+                        </Button>
+                    </Row>
                 </React.Fragment>
             )}
         </Container>
