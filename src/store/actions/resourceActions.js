@@ -15,7 +15,6 @@ export const getResources = () => {
     return (dispatch) => {
         return axios.get(`${apiUrl}/resources`, config)
             .then(response => {
-                console.log(response.data.resources);
                 dispatch(setResources(response.data.resources));
             })
             .catch(error => {
@@ -35,7 +34,6 @@ export const postResource = (info) => {
     return (dispatch) => {
         return axios.post(`${apiUrl}/resources`, info, config)
             .then(response => {
-                console.log(response.data.createdResource);
                 dispatch(addResource(response.data.createdResource));
             })
             .catch(error => {
@@ -55,7 +53,6 @@ export const deleteResourceRequest = (id) => {
     return (dispatch) => {
         return axios.delete(`${apiUrl}/resources/${id}`, config)
             .then(response => {
-                console.log(response);
                 dispatch(deleteResource(id));
             })
             .catch(error => {

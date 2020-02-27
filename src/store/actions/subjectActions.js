@@ -15,7 +15,6 @@ export const getSubjects = () => {
     return (dispatch) => {
         return axios.get(`${apiUrl}/subjects`, config)
             .then(response => {
-                console.log(response.data.subjects);
                 dispatch(setSubjects(response.data.subjects));
             })
             .catch(error => {
@@ -35,7 +34,6 @@ export const postSubject = (info) => {
     return (dispatch) => {
         return axios.post(`${apiUrl}/subjects`, info, config)
             .then(response => {
-                console.log(response.data);
                 dispatch(addSubject(response.data.newSubject));
             })
             .catch(error => {
@@ -55,7 +53,6 @@ export const deleteSubjectRequest = (id) => {
     return (dispatch) => {
         return axios.delete(`${apiUrl}/subjects/${id}`, config)
             .then(response => {
-                console.log(response);
                 dispatch(deleteSubject(id));
             })
             .catch(error => {

@@ -65,8 +65,8 @@ const AuthForm = (props) => {
     )
 }
 
-const mapDispatchToProps = {
+const mapDispatchToProps = ({
     authLogin
-}
+})
 
 export default connect(null, mapDispatchToProps)(AuthForm);

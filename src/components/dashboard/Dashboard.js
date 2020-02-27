@@ -7,21 +7,25 @@ import { getResources } from '../../store/actions/resourceActions';
 
 const Dashboard = (props) => {
 
-  const token = sessionStorage.getItem('token');
-  if (token) {
-    props.getSubjects(token);
-    props.getResources(token);
+  if (props.auth.loggedIn) {
+    props.getSubjects();
+    props.getResources();
   }
 
     return (
         <div>
-            <SubjectTabs />
+          <SubjectTabs />
         </div>
     )
 }
+
+const mapStateToProps = ({ auth }) => ({
+  auth
+})
+
 const mapDispatchToProps = ({
   getSubjects,
   getResources
 })
 
-export default connect(null, mapDispatchToProps)(Dashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
