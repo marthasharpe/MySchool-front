@@ -3,13 +3,23 @@ import AppBar from '../appbar/AppBar';
 import SubjectTabs from '../subjectTabs/SubjectTabs';
 import Home from '../home/Home';
 import AuthForm from '../authForm/AuthForm';
+import { connect } from 'react-redux';
+import { getSubjects } from '../../store/actions/subjectActions';
+import { getResources } from '../../store/actions/resourceActions';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
 } from "react-router-dom";
 
-function App() {
+const App = ({ getResources, getSubjects }) => {
+
+  const token = localStorage.getItem('token');
+  if (token) {
+    getSubjects(token);
+    getResources(token);
+  }
+
   return (
     <Router>
       <AppBar />
@@ -22,4 +32,9 @@ function App() {
   );
 }
 
-export default App;
+const mapDispatchToProps = ({
+  getSubjects,
+  getResources
+})
+
+export default connect(null, mapDispatchToProps)(App);

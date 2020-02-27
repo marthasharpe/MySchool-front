@@ -4,17 +4,9 @@ import { connect } from 'react-redux';
 import ResourceCards from '../resourceCards/ResourceCards';
 import NewSubject from '../newSubject/NewSubject';
 import Dashboard from '../dashboard/Dashboard';
-import { getSubjects } from '../../store/actions/subjectActions';
-import { getResources } from '../../store/actions/resourceActions';
 import './SubjectTabs.css';
 
-const SubjectTabs = ({ getSubjects, getResources, subjects }) => {
-
-    React.useEffect(() => {
-        getSubjects();
-        getResources();
-    }, [getSubjects, getResources])
-
+const SubjectTabs = (props) => {
     return (
         <Container>
         <Tabs
@@ -28,7 +20,7 @@ const SubjectTabs = ({ getSubjects, getResources, subjects }) => {
                 >
                 <Dashboard />
             </Tab>
-            {subjects.length > 0 ? subjects.sort(
+            {props.subjects.length > 0 ? props.subjects.sort(
                 (a, b) => a.name > b.name ? 1 : -1)
                 .map(subject => {
                 return (
@@ -57,9 +49,4 @@ const mapStateToProps = ({ subjects }) => ({
     subjects
 })
 
-const mapDispatchToProps = ({
-    getSubjects,
-    getResources
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(SubjectTabs);
+export default connect(mapStateToProps)(SubjectTabs);

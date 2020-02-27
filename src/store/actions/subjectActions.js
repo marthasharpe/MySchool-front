@@ -5,9 +5,14 @@ import {
 
 const apiUrl = "https://floating-crag-05232.herokuapp.com"
 
-export const getSubjects = () => {
+export const getSubjects = (token) => {
+    let config = {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }
     return (dispatch) => {
-        return axios.get(`${apiUrl}/subjects`)
+        return axios.get(`${apiUrl}/subjects`, config)
             .then(response => {
                 console.log(response.data.subjects);
                 dispatch(setSubjects(response.data.subjects));

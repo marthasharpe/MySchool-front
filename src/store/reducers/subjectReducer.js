@@ -2,18 +2,7 @@ import {
     SET_SUBJECTS, ADD_SUBJECT, DELETE_SUBJECT
 } from '../actions/actionTypes';
 
-const initialState = [
-    {
-        _id: "5e5429ecab9da14c75371f7a",
-        name:"React"
-    },
-    {
-        _id: "5e5429f8ab9da14c75371f7b",
-        name:"Redux"
-    }
-]
-
-const subjectReducer = (state = initialState, action) => {
+const subjectReducer = (state = [], action) => {
     switch (action.type) {
         case SET_SUBJECTS:
             return state.concat(action.payload)
