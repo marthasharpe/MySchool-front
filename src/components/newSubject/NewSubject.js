@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { postSubject } from '../../store/actions/subjectActions';
+import { addSubject } from '../../store/actions/subjectActions';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import './NewSubject.css';
 
@@ -18,7 +18,7 @@ const NewSubject = (props) => {
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        props.postSubject(info);
+        props.addSubject(info);
         setInfo({
             name: '',
         })
@@ -49,7 +49,7 @@ const NewSubject = (props) => {
 }
 
 const mapDispatchToProps = {
-    postSubject
+    addSubject
 }
 
 export default connect(null, mapDispatchToProps)(NewSubject);

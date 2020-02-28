@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Badge, Button, Container, Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
 // import EditResource from '../EditResource';
-import { deleteSubjectRequest } from '../../store/actions/subjectActions';
+import { deleteSubject } from '../../store/actions/subjectActions';
 import { deleteResourceRequest } from '../../store/actions/resourceActions';
 import './ResourceCards.css';
 
@@ -22,7 +22,7 @@ const ResourceCards = (props) => {
     }
 
     const handleDeleteSubject = () => {
-        props.deleteSubjectRequest(props.subject._id);
+        props.deleteSubject(props.subject._id);
     }
     
     return (
@@ -89,7 +89,7 @@ const mapStateToProps = ({resources}) => ({
 })
 
 const mapDispatchToProps = ({
-    deleteSubjectRequest,
+    deleteSubject,
     deleteResourceRequest
 })
 

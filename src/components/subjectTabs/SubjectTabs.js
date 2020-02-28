@@ -12,7 +12,7 @@ const SubjectTabs = (props) => {
                 className="justify-content-center"
                 style={{marginTop: '1rem'}}
                 >
-                {props.subjects.length > 0 ? props.subjects.sort(
+                {props.subjects.subjectList.length > 0 ? props.subjects.subjectList.sort(
                     (a, b) => a.name > b.name ? 1 : -1)
                     .map(subject => {
                     return (
