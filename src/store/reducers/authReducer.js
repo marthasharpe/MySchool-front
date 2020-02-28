@@ -1,5 +1,5 @@
 import {
-    LOGIN_SUCCESS, LOGIN_FAILURE, USER_LOGOUT, LOGIN_REQUEST
+    LOGIN_SUCCESS, LOGIN_FAILURE, LOGIN_REQUEST
 } from '../actions/authActions';
 
 const initialState = {
@@ -30,13 +30,8 @@ const authReducer = (state = initialState, action) => {
                 loggedIn: false,
                 error: action.payload
             }
-        case USER_LOGOUT:
-            return {
-                ...state,
-                loggedIn: false
-            }
         default:
-            return state
+            return state;
     }
 }
 

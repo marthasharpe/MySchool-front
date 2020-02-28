@@ -2,7 +2,7 @@ import axios from 'axios';
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
-export const USER_LOGOUT = 'USER_LOGIN';
+export const USER_LOGOUT = 'USER_LOGOUT';
 
 const apiUrl = "https://floating-crag-05232.herokuapp.com"
 
