@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Form, Button, Container } from 'react-bootstrap';
-import { postResource } from '../../store/actions/resourceActions';
+import { addResource } from '../../store/actions/resourceActions';
 
 const ResourceForm = (props) => {
 
@@ -22,7 +22,7 @@ const ResourceForm = (props) => {
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        props.postResource(info);
+        props.addResource(info);
         props.handleClose();
     }
     
@@ -66,7 +66,11 @@ const ResourceForm = (props) => {
                     <Form.Label>Subject</Form.Label>
                     <Form.Control as="select" name="subject" onChange={handleChange}>
                         <option value="">Choose a Subject</option>
-                        {props.subjects.map(subject => <option key={subject.name} value={subject.name}>{subject.name}</option>)}
+                        {props.subjects.subjectList.map(subject => (
+                            <option key={subject.name} value={subject.name}>
+                                {subject.name}
+                            </option>
+                        ))}
                     </Form.Control>
                 </Form.Group>
                 <Form.Label>Status</Form.Label>
@@ -113,7 +117,7 @@ const mapStateToProps = ({subjects, resources}) => ({
 })
 
 const mapDispatchToProps = {
-    postResource
+    addResource
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ResourceForm);

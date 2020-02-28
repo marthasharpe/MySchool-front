@@ -15,8 +15,8 @@ const ResourceCards = (props) => {
     
     // only display resources that match the subject name
     let resources = [];
-    if (props.resources.length > 0) {
-        resources = props.resources.filter(
+    if (props.resources.resourceList.length > 0) {
+        resources = props.resources.resourceList.filter(
             resource => resource.subject === props.subject.name
         )
     }
