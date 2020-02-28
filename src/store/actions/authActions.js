@@ -11,7 +11,7 @@ export const authLogin = (authInfo) => {
         dispatch(loginRequest());
         return axios.post(`${apiUrl}/users/login`, authInfo)
             .then(response => {
-                dispatch(loginSuccess());
+                dispatch(loginSuccess(response.data.user.userId));
                 sessionStorage.setItem('token', response.data.token);
             })
             .catch(error => {

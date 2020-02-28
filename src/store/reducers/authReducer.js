@@ -5,6 +5,7 @@ import {
 const initialState = {
     loading: false,
     loggedIn: false,
+    user: null,
     error: null
 }
 
@@ -20,6 +21,7 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 loading: false,
                 loggedIn: true,
+                userId: action.payload
             }
         case LOGIN_FAILURE:
             return {
