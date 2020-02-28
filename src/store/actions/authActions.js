@@ -26,9 +26,10 @@ export const loginRequest = () => {
     }
 }
 
-export const loginSuccess = () => {
+export const loginSuccess = (id) => {
     return {
-        type: LOGIN_SUCCESS
+        type: LOGIN_SUCCESS,
+        payload: id
     }
 }
 

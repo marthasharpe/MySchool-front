@@ -14,13 +14,15 @@ const authReducer = (state = initialState, action) => {
         case LOGIN_REQUEST:
             return {
                 ...state,
-                loading: true
+                loading: true,
+                error: null
             }
         case LOGIN_SUCCESS:
             return {
                 ...state,
                 loading: false,
                 loggedIn: true,
+                error: null,
                 userId: action.payload
             }
         case LOGIN_FAILURE:
