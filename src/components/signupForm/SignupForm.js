@@ -11,7 +11,8 @@ const SignupForm = (props) => {
         firstName: '',
         lastName: '',
         email: '',
-        password: ''
+        password: '',
+        password2: ''
     })
 
     const handleChange = (e) => {
@@ -25,16 +26,31 @@ const SignupForm = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        props.authSignup(authInfo);
-        // reset local state
-        setAuthInfo({
-            firstName: '',
-            lastName: '',
-            email: '',
-            password: ''
-        })
-        // redirect to home
-        history.push('/');
+        if (authInfo.password !== authInfo.password2) {
+            alert('Passwords don\'t match.');
+            setAuthInfo({
+                ...authInfo,
+                password: '',
+                password2: ''
+            });
+        } else {
+            props.authSignup({
+                firstName: authInfo.firstName,
+                lastName: authInfo.lastName,
+                email: authInfo.email,
+                password: authInfo.password,
+            });
+            // reset local state
+            setAuthInfo({
+                firstName: '',
+                lastName: '',
+                email: '',
+                password: '',
+                password2: ''
+            })
+            // redirect to home
+            history.push('/');
+        }
     }
 
     return (
@@ -80,7 +96,17 @@ const SignupForm = (props) => {
                         type="password"
                         name="password"
                         value={authInfo.password}
-                        placeholder="enter your password"
+                        placeholder="create a password"
+                        onChange={handleChange}
+                        required
+                        />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Control
+                        type="password"
+                        name="password2"
+                        value={authInfo.password2}
+                        placeholder="re-enter password"
                         onChange={handleChange}
                         required
                         />

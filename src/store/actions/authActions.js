@@ -14,7 +14,7 @@ export const authLogin = (authInfo) => {
         dispatch(loginRequest());
         return axios.post(`${apiUrl}/users/login`, authInfo)
             .then(response => {
-                dispatch(loginSuccess(response.data.user.userId));
+                dispatch(loginSuccess(response.data.user));
                 sessionStorage.setItem('token', response.data.token);
             })
             .catch(error => {
@@ -29,10 +29,10 @@ export const loginRequest = () => {
     }
 }
 
-export const loginSuccess = (id) => {
+export const loginSuccess = (user) => {
     return {
         type: LOGIN_SUCCESS,
-        payload: id
+        payload: user
     }
 }
 
@@ -48,7 +48,7 @@ export const authSignup = (authInfo) => {
         dispatch(signupRequest());
         return axios.post(`${apiUrl}/users/signup`, authInfo)
             .then(response => {
-                dispatch(signupSuccess(response.data.user.userId));
+                dispatch(signupSuccess(response.data.user));
                 sessionStorage.setItem('token', response.data.token);
             })
             .catch(error => {
@@ -63,10 +63,10 @@ export const signupRequest = () => {
     }
 }
 
-export const signupSuccess = (id) => {
+export const signupSuccess = (user) => {
     return {
         type: SIGNUP_SUCCESS,
-        payload: id
+        payload: user
     }
 }
 
