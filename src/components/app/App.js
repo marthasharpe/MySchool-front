@@ -2,7 +2,8 @@ import React from 'react';
 import AppBar from '../appbar/AppBar';
 import SubjectTabs from '../subjectTabs/SubjectTabs';
 import Home from '../home/Home';
-import AuthForm from '../authForm/AuthForm';
+import LoginForm from '../loginForm/LoginForm';
+import SignupForm from '../signupForm/SignupForm';
 import {
   BrowserRouter as Router,
   Switch,
@@ -17,7 +18,8 @@ const App = () => {
       <Switch>
         <Route exact path="/"><Home /></Route>
         <Route path="/subjects"><SubjectTabs /></Route>
-        <Route path="/login"><AuthForm /></Route>
+        <Route path="/login"><LoginForm /></Route>
+        <Route path="/signup"><SignupForm /></Route>
       </Switch>
     </Router>
   );

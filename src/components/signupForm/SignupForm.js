@@ -2,12 +2,14 @@ import React from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { authLogin } from '../../store/actions/authActions';
-import './AuthForm.css';
+import { authSignup } from '../../store/actions/authActions';
+import './SignupForm.css';
 
-const AuthForm = (props) => {
+const SignupForm = (props) => {
 
     const [ authInfo, setAuthInfo ] = React.useState({
+        firstName: '',
+        lastName: '',
         email: '',
         password: ''
     })
@@ -23,9 +25,11 @@ const AuthForm = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        props.authLogin(authInfo);
+        props.authSignup(authInfo);
         // reset local state
         setAuthInfo({
+            firstName: '',
+            lastName: '',
             email: '',
             password: ''
         })
@@ -36,7 +40,29 @@ const AuthForm = (props) => {
     return (
         <Container className="auth-container">
             <Form className="auth-form" onSubmit={handleSubmit}>
-                <h2>Login</h2>
+                <h2>Signup</h2>
+                <Form.Group>
+                    <Form.Label>First Name</Form.Label>
+                    <Form.Control
+                        type="text"
+                        name="firstName"
+                        value={authInfo.firstName}
+                        placeholder="first name"
+                        onChange={handleChange}
+                        required
+                        />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>Last Name</Form.Label>
+                    <Form.Control
+                        type="text"
+                        name="lastName"
+                        value={authInfo.lastName}
+                        placeholder="last name"
+                        onChange={handleChange}
+                        required
+                        />
+                </Form.Group>
                 <Form.Group>
                     <Form.Label>Email</Form.Label>
                     <Form.Control
@@ -66,7 +92,7 @@ const AuthForm = (props) => {
 }
 
 const mapDispatchToProps = ({
-    authLogin
+    authSignup
 })
 
-export default connect(null, mapDispatchToProps)(AuthForm);
+export default connect(null, mapDispatchToProps)(SignupForm);
