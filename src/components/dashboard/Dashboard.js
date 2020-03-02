@@ -4,21 +4,19 @@ import SideTabs from '../sideTabs/SideTabs';
 import { connect } from 'react-redux';
 import { getSubjects } from '../../store/actions/subjectActions';
 import { getResources } from '../../store/actions/resourceActions';
+import { Container } from 'react-bootstrap';
 
-const Dashboard = ({ getSubjects, getResources, auth }) => {
+const Dashboard = ({ getSubjects, getResources }) => {
 
   React.useEffect(() => {
-    // if (auth.loggedIn) {
-    //   const userId = auth.user.userId
       getSubjects();
       getResources();
-    //}
   }, [getResources, getSubjects])
 
     return (
-        <div>
+        <Container style={{marginTop: 50}}>
           <SideTabs />
-        </div>
+        </Container>
     )
 }
 

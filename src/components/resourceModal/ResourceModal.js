@@ -13,7 +13,7 @@ const ResourceModal = () => {
 
     return (
         <React.Fragment>
-            <Button onClick={handleShow} variant="link" id="new-source">
+            <Button onClick={handleShow} variant="light">
                 + New Resource
             </Button>
             <Modal show={show} onHide={handleClose} animation={false}>

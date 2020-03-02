@@ -24,6 +24,10 @@ const ResourceCards = (props) => {
     const handleDeleteSubject = () => {
         props.deleteSubject(props.subject._id);
     }
+
+    const handleEditResource = () => {
+        console.log('edit resource');
+    }
     
     return (
         <Container className="resources-container">
@@ -50,7 +54,7 @@ const ResourceCards = (props) => {
                             /
                             {/* <EditResource id={resource._id}/> */}
                             <Button
-                                onClick={console.log('edit resource')}
+                                onClick={handleEditResource}
                                 variant="link"
                                 style={linkStyle}
                                 >

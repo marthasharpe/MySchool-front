@@ -4,7 +4,6 @@ import { NavLink, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import icon from '../../openbook.png';
 import { userLogout } from '../../store/actions/authActions';
-import ResourceModal from '../resourceModal/ResourceModal';
 import './AppBar.css';
 
 const AppBar = (props) => {
@@ -32,7 +31,6 @@ const AppBar = (props) => {
             <Navbar.Collapse className="justify-content-end">
                 {props.auth.loggedIn ? (
                     <Nav>
-                        <ResourceModal />
                         <Button
                             variant="link"
                             onClick={handleLogout}

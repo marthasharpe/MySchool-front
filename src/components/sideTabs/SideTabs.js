@@ -2,18 +2,23 @@ import React from 'react';
 import './SideTabs.css';
 import { Tab, Row, Col, Nav } from 'react-bootstrap';
 import SubjectTabs from '../subjectTabs/SubjectTabs';
+import ResourceModal from '../resourceModal/ResourceModal';
 
 const SideTabs = () => {
     return (
-        <Tab.Container id="left-tabs-example" defaultActiveKey="dashboard">
+        <Tab.Container defaultActiveKey="dashboard">
             <Row>
                 <Col sm={3}>
-                    <Nav variant="pills" className="flex-column">
-                        <Nav.Item>
+                    <ResourceModal />
+                    <Nav className="flex-column">
+                        <Nav.Item className="sidetab-link">
                             <Nav.Link eventKey="dashboard">Dashboard</Nav.Link>
                         </Nav.Item>
-                        <Nav.Item>
+                        <Nav.Item className="sidetab-link">
                             <Nav.Link eventKey="subjects">Subjects</Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item className="sidetab-link">
+                            <Nav.Link eventKey="search">Search</Nav.Link>
                         </Nav.Item>
                     </Nav>
                 </Col>
@@ -24,6 +29,9 @@ const SideTabs = () => {
                         </Tab.Pane>
                         <Tab.Pane eventKey="subjects">
                             <SubjectTabs />
+                        </Tab.Pane>
+                        <Tab.Pane eventKey="search">
+                            <p>Search</p>
                         </Tab.Pane>
                     </Tab.Content>
                 </Col>
