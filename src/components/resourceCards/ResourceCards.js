@@ -50,7 +50,7 @@ const ResourceCards = (props) => {
                             /
                             {/* <EditResource id={resource._id}/> */}
                             <Button
-                                onClick={() => props.deleteResourceRequest(resource._id)}
+                                onClick={console.log('edit resource')}
                                 variant="link"
                                 style={linkStyle}
                                 >

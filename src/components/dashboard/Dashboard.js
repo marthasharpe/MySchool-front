@@ -1,6 +1,6 @@
 import React from 'react';
 import './Dashboard.css';
-import SubjectTabs from '../subjectTabs/SubjectTabs';
+import SideTabs from '../sideTabs/SideTabs';
 import { connect } from 'react-redux';
 import { getSubjects } from '../../store/actions/subjectActions';
 import { getResources } from '../../store/actions/resourceActions';
@@ -17,7 +17,7 @@ const Dashboard = ({ getSubjects, getResources, auth }) => {
 
     return (
         <div>
-          <SubjectTabs />
+          <SideTabs />
         </div>
     )
 }
