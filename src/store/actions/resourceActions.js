@@ -58,9 +58,10 @@ export const getResourcesFailure = (error) => {
 export const addResource = (info) => {
     return (dispatch) => {
         dispatch(addResourceRequest());
-        return axios.post(`${apiUrl}/resources`, info, config)
+        return axios.post(`${apiUrl}/resources/${userId}`, info, config)
             .then(response => {
-                dispatch(addResourceSuccess(response.data.newResource));
+                console.log(response.data)
+                dispatch(addResourceSuccess(response.data.createdResource));
             })
             .catch(error => {
                 dispatch(addResourceFailure(error));
@@ -91,7 +92,7 @@ export const addResourceFailure = (error) => {
 export const deleteResource = (id) => {
     return (dispatch) => {
         dispatch(deleteResourceRequest());
-        return axios.delete(`${apiUrl}/resources/${id}`, config)
+        return axios.delete(`${apiUrl}/resources/${userId}/${id}`, config)
             .then(response => {
                 dispatch(deleteResourceSuccess(id));
             })
