@@ -14,7 +14,8 @@ export const DELETE_SUBJECT_SUCCESS = 'DELETE_SUBJECT_SUCCESS';
 export const DELETE_SUBJECT_FAILURE = 'DELETE_SUBJECT_FAILURE';
 
 const apiUrl = "https://floating-crag-05232.herokuapp.com"
-const token = sessionStorage.getItem('token');
+const token = localStorage.getItem('token');
+const userId = localStorage.getItem('userId');
 let config = {
         headers: {
             'Authorization': `Bearer ${token}`
@@ -24,7 +25,7 @@ let config = {
 export const getSubjects = () => {
     return (dispatch) => {
         dispatch(getSubjectsRequest());
-        return axios.get(`${apiUrl}/subjects`, config)
+        return axios.get(`${apiUrl}/subjects/${userId}`, config)
             .then(response => {
                 dispatch(getSubjectsSuccess(response.data.subjects));
             })
@@ -57,7 +58,7 @@ export const getSubjectsFailure = (error) => {
 export const addSubject = (info) => {
     return (dispatch) => {
         dispatch(addSubjectRequest());
-        return axios.post(`${apiUrl}/subjects`, info, config)
+        return axios.post(`${apiUrl}/subjects/${userId}`, info, config)
             .then(response => {
                 dispatch(addSubjectSuccess(response.data.newSubject));
             })
@@ -90,7 +91,7 @@ export const addSubjectFailure = (error) => {
 export const deleteSubject = (id) => {
     return (dispatch) => {
         dispatch(deleteSubjectRequest());
-        return axios.delete(`${apiUrl}/subjects/${id}`, config)
+        return axios.delete(`${apiUrl}/subjects//${userId}/${id}`, config)
             .then(response => {
                 dispatch(deleteSubjectSuccess(id));
             })

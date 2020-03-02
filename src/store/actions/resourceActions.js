@@ -14,7 +14,8 @@ export const DELETE_RESOURCE_SUCCESS = 'DELETE_RESOURCE_SUCCESS';
 export const DELETE_RESOURCE_FAILURE = 'DELETE_RESOURCE_FAILURE';
 
 const apiUrl = "https://floating-crag-05232.herokuapp.com"
-const token = sessionStorage.getItem('token');
+const token = localStorage.getItem('token');
+const userId = localStorage.getItem('userId');
 let config = {
         headers: {
             'Authorization': `Bearer ${token}`
@@ -24,7 +25,7 @@ let config = {
 export const getResources = () => {
     return (dispatch) => {
         dispatch(getResourcesRequest());
-        return axios.get(`${apiUrl}/resources`, config)
+        return axios.get(`${apiUrl}/resources/${userId}`, config)
             .then(response => {
                 dispatch(getResourcesSuccess(response.data.resources));
             })

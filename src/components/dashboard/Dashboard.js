@@ -5,12 +5,15 @@ import { connect } from 'react-redux';
 import { getSubjects } from '../../store/actions/subjectActions';
 import { getResources } from '../../store/actions/resourceActions';
 
-const Dashboard = (props) => {
+const Dashboard = ({ getSubjects, getResources, auth }) => {
 
-  if (props.auth.loggedIn) {
-    props.getSubjects();
-    props.getResources();
-  }
+  React.useEffect(() => {
+    // if (auth.loggedIn) {
+    //   const userId = auth.user.userId
+      getSubjects();
+      getResources();
+    //}
+  }, [getResources, getSubjects])
 
     return (
         <div>
