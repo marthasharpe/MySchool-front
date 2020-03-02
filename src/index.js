@@ -8,8 +8,10 @@ import store from './store/store';
 import { LOGIN_SUCCESS } from './store/actions/authActions';
 
 // stay signed in during a session
-const token = sessionStorage.getItem('token');
-if (token) {
+const token = localStorage.getItem('token');
+const userId = localStorage.getItem('userId');
+
+if (token && userId) {
     store.dispatch({ type: LOGIN_SUCCESS });
 }
 

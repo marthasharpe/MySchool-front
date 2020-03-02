@@ -16,6 +16,7 @@ const rootReducer = (state, action) => {
     // when a logout action is dispatched it will reset redux state
     if (action.type === USER_LOGOUT) {
         state = undefined;
+        localStorage.clear();
     } 
     return appReducer(state, action);
 };

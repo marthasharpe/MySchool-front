@@ -1,11 +1,11 @@
-#new-source {
+#new-resource {
     text-decoration: none;
     color: white;
     padding: 0 10px;
     line-height: 1;
 }
 
-#new-source:hover {
+#new-resource:hover {
     text-decoration: none;
     color: rgba(255,255,255,.5);
 }
