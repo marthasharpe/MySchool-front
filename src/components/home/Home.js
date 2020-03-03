@@ -4,14 +4,15 @@ import { connect } from 'react-redux';
 import Signature from '../Signature/Signature';
 import Welcome from '../welcome/Welcome';
 import Dashboard from '../dashboard/Dashboard';
+import './Home.css';
 
 const Home = (props) => {
     return (
-        <div>
+        <div className="home-container">
         { props.auth.loggedIn ? (
             <Dashboard />
         ) : (
-            <div>
+            <div id="home">
                 <Welcome />
                 <Row className="justify-content-center">
                     <p style={{textAlign: "center"}}>

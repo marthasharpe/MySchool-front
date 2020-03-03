@@ -8,7 +8,7 @@ const SideTabs = () => {
     return (
         <Tab.Container defaultActiveKey="dashboard">
             <Row>
-                <Col sm={3} style={{marginTop: 50}}>
+                <Col sm={3}>
                     <ResourceModal />
                     <Nav className="flex-column">
                         <Nav.Item className="sidetab-link">
