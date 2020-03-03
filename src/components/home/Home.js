@@ -1,18 +1,20 @@
 import React from 'react';
-import { Row } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import Signature from '../Signature/Signature';
 import Welcome from '../welcome/Welcome';
-import Dashboard from '../dashboard/Dashboard';
+import SideTabs from '../sideTabs/SideTabs';
 import './Home.css';
 
 const Home = (props) => {
     return (
         <div className="home-container">
         { props.auth.loggedIn ? (
-            <Dashboard />
+            <Container>
+                <SideTabs />
+            </Container>
         ) : (
-            <div id="home">
+            <div>
                 <Welcome />
                 <Row className="justify-content-center">
                     <p style={{textAlign: "center"}}>

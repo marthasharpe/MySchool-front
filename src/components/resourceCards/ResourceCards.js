@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Badge, Button, Container } from 'react-bootstrap';
 import { connect } from 'react-redux';
-// import EditResource from '../EditResource';
+import EditResource from '../editResource/EditResource';
 import { deleteSubject } from '../../store/actions/subjectActions';
 import { deleteResource } from '../../store/actions/resourceActions';
 import './ResourceCards.css';
@@ -24,10 +24,6 @@ const ResourceCards = (props) => {
     const handleDeleteSubject = () => {
         props.deleteSubject(props.subject._id);
         props.setKey('New Subject');
-    }
-
-    const handleEditResource = () => {
-        console.log('edit resource');
     }
     
     return (
@@ -53,14 +49,7 @@ const ResourceCards = (props) => {
                                 Go to Resource
                             </Button>
                             /
-                            {/* <EditResource id={resource._id}/> */}
-                            <Button
-                                onClick={handleEditResource}
-                                variant="link"
-                                style={linkStyle}
-                                >
-                                Edit
-                            </Button>
+                            <EditResource id={resource._id}/>
                             /
                             <Button
                                 onClick={() => props.deleteResource(resource._id)}
