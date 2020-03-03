@@ -14,7 +14,7 @@ const Dashboard = ({ getSubjects, getResources }) => {
   }, [getResources, getSubjects])
 
     return (
-        <Container style={{marginTop: 50}}>
+        <Container>
           <SideTabs />
         </Container>
     )

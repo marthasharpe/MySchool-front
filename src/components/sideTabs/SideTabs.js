@@ -8,7 +8,7 @@ const SideTabs = () => {
     return (
         <Tab.Container defaultActiveKey="dashboard">
             <Row>
-                <Col sm={3}>
+                <Col sm={3} style={{marginTop: 50}}>
                     <ResourceModal />
                     <Nav className="flex-column">
                         <Nav.Item className="sidetab-link">
@@ -24,7 +24,7 @@ const SideTabs = () => {
                 </Col>
                 <Col sm={9}>
                     <Tab.Content>
-                        <Tab.Pane eventKey="dashboard">
+                        <Tab.Pane eventKey="dashboard" className="dashboard-container">
                             <p>dashboard</p>
                         </Tab.Pane>
                         <Tab.Pane eventKey="subjects">
