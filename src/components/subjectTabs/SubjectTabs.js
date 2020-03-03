@@ -6,12 +6,23 @@ import NewSubject from '../newSubject/NewSubject';
 import './SubjectTabs.css';
 
 const SubjectTabs = (props) => {
+    const [ key, setKey ] = React.useState('New Subject');
+    
     return (
         <Container>
             <Tabs
                 className="justify-content-center"
+                activeKey={key}
+                onSelect={tab => setKey(tab)}
                 style={{marginTop: '1rem'}}
                 >
+                <Tab
+                    key="New Subject"
+                    eventKey="New Subject"
+                    title="+ New Subject"
+                    >
+                    <NewSubject />
+                </Tab>
                 {props.subjects.subjectList.length > 0 ? props.subjects.subjectList.sort(
                     (a, b) => a.name > b.name ? 1 : -1)
                     .map(subject => {
@@ -21,17 +32,10 @@ const SubjectTabs = (props) => {
                             eventKey={subject.name}
                             title={subject.name}
                             >
-                            <ResourceCards subject={subject}/>
+                            <ResourceCards subject={subject} setKey={setKey}/>
                         </Tab>
                     )
                 }) : null}
-                <Tab
-                    key="New Subject"
-                    eventKey="New Subject"
-                    title="+ New Subject"
-                    >
-                    <NewSubject />
-                </Tab>
             </Tabs>
         </Container>
     )

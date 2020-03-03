@@ -30,12 +30,12 @@ const NewSubject = (props) => {
                 <Col md={{span: 8}}>
                     <Form onSubmit={handleSubmit}>
                         <Form.Group>
-                            <Form.Label>Subject Name</Form.Label>
+                            <h5>Create a New Subject</h5>
                             <Form.Control
                                 type="text"
                                 name="name"
                                 value={info.name}
-                                placeholder="name your subject"
+                                placeholder="subject name"
                                 onChange={handleChange}
                                 required
                                 />

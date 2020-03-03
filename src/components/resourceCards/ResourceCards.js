@@ -1,9 +1,9 @@
 import React from 'react';
-import { Card, Badge, Button, Container, Row } from 'react-bootstrap';
+import { Card, Badge, Button, Container } from 'react-bootstrap';
 import { connect } from 'react-redux';
 // import EditResource from '../EditResource';
 import { deleteSubject } from '../../store/actions/subjectActions';
-import { deleteResourceRequest } from '../../store/actions/resourceActions';
+import { deleteResource } from '../../store/actions/resourceActions';
 import './ResourceCards.css';
 
 const linkStyle = {
@@ -23,6 +23,7 @@ const ResourceCards = (props) => {
 
     const handleDeleteSubject = () => {
         props.deleteSubject(props.subject._id);
+        props.setKey('New Subject');
     }
 
     const handleEditResource = () => {
@@ -62,7 +63,7 @@ const ResourceCards = (props) => {
                             </Button>
                             /
                             <Button
-                                onClick={() => props.deleteResourceRequest(resource._id)}
+                                onClick={() => props.deleteResource(resource._id)}
                                 variant="link"
                                 style={linkStyle}
                                 >
@@ -72,17 +73,15 @@ const ResourceCards = (props) => {
                     </Card>
                 )
             }) : (
-                <React.Fragment>
-                    <h5 style={{marginTop: 50, textAlign: "center"}}>You have no resources saved.</h5>
-                    <Row className="justify-content-center">
-                        <Button
-                            onClick={handleDeleteSubject}
-                            variant="success"
-                            >
-                            Delete Subject
-                        </Button>
-                    </Row>
-                </React.Fragment>
+                <div style={{margin: 50}}>
+                    <h5>You have no resources saved.</h5>
+                    <Button
+                        onClick={handleDeleteSubject}
+                        variant="success"
+                        >
+                        Delete Subject
+                    </Button>
+                </div>
             )}
         </Container>
     )
@@ -94,7 +93,7 @@ const mapStateToProps = ({resources}) => ({
 
 const mapDispatchToProps = ({
     deleteSubject,
-    deleteResourceRequest
+    deleteResource
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ResourceCards);
