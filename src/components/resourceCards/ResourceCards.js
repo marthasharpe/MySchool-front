@@ -49,7 +49,7 @@ const ResourceCards = (props) => {
                                 Go to Resource
                             </Button>
                             /
-                            <EditResource id={resource._id}/>
+                            <EditResource resource={resource}/>
                             /
                             <Button
                                 onClick={() => props.deleteResource(resource._id)}

@@ -8,6 +8,10 @@ export const GET_RESOURCES_FAILURE = 'GET_RESOURCES_FAILURE';
 export const ADD_RESOURCE_REQUEST = 'ADD_RESOURCE_REQUEST';
 export const ADD_RESOURCE_SUCCESS = 'ADD_RESOURCE_SUCCESS';
 export const ADD_RESOURCE_FAILURE = 'ADD_RESOURCE_FAILURE';
+// patch existing resource
+export const EDIT_RESOURCE_REQUEST = 'EDIT_RESOURCE_REQUEST';
+export const EDIT_RESOURCE_SUCCESS = 'EDIT_RESOURCE_SUCCESS';
+export const EDIT_RESOURCE_FAILURE = 'EDIT_RESOURCE_FAILURE';
 // delete a resource
 export const DELETE_RESOURCE_REQUEST = 'DELETE_RESOURCE_REQUEST';
 export const DELETE_RESOURCE_SUCCESS = 'DELETE_RESOURCE_SUCCESS';
@@ -85,6 +89,41 @@ export const addResourceSuccess = (info) => {
 export const addResourceFailure = (error) => {
     return {
         type: ADD_RESOURCE_FAILURE,
+        payload: error
+    }
+}
+
+export const editResource = (info) => {
+    console.log(info)
+    // return (dispatch) => {
+    //     dispatch(editResourceRequest());
+    //     return axios.patch(`${apiUrl}/resources/${userId}`, info, config)
+    //         .then(response => {
+    //             console.log(response.data)
+    //             dispatch(editResourceSuccess(response.data.createdResource));
+    //         })
+    //         .catch(error => {
+    //             dispatch(editResourceFailure(error));
+    //         })
+    // }
+}
+
+export const editResourceRequest = () => {
+    return {
+        type: EDIT_RESOURCE_REQUEST
+    }
+}
+
+export const editResourceSuccess = (info) => {
+    return {
+        type: EDIT_RESOURCE_SUCCESS,
+        payload: info
+    }
+}
+
+export const editResourceFailure = (error) => {
+    return {
+        type: EDIT_RESOURCE_FAILURE,
         payload: error
     }
 }

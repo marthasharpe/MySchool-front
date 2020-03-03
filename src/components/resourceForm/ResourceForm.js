@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Form, Button, Container } from 'react-bootstrap';
-import { addResource } from '../../store/actions/resourceActions';
+import { addResource, editResource } from '../../store/actions/resourceActions';
 
 const ResourceForm = (props) => {
 
@@ -13,6 +13,19 @@ const ResourceForm = (props) => {
         status: '',
     })
 
+    React.useEffect(() => {
+        // fill in fields for existing resource
+        if (props.resource) {
+            setInfo({
+                title: props.resource.title,
+                description: props.resource.description,
+                link: props.resource.link,
+                subject: props.resource.subject,
+                status: props.resource.status,
+            })
+        }
+    }, [props.resource])
+
     const handleChange = (e) => {
         setInfo({
             ...info,
@@ -22,7 +35,11 @@ const ResourceForm = (props) => {
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        props.addResource(info);
+        // info to edit existing resource or add new resource
+        props.resource ? props.editResource({
+            ...info,
+            _id: props.resource._id
+        }) : props.addResource(info);
         props.handleClose();
     }
     
@@ -117,7 +134,8 @@ const mapStateToProps = ({subjects, resources}) => ({
 })
 
 const mapDispatchToProps = {
-    addResource
+    addResource,
+    editResource
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ResourceForm);

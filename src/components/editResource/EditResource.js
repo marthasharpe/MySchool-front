@@ -26,7 +26,7 @@ const EditResource = (props) => {
                     <Modal.Title>Edit Resource</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <ResourceForm handleClose={handleClose} id={props.id}/>
+                    <ResourceForm handleClose={handleClose} resource={props.resource}/>
                 </Modal.Body>
             </Modal>
         </React.Fragment>
