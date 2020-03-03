@@ -2,6 +2,8 @@
     padding: 1rem;
     background-color: rgb(255, 255, 255, 0.7);
     text-align: center;
+    overflow: auto;
+    max-height: 450px;
 }
 
 .resource-cards {
