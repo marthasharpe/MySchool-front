@@ -4,18 +4,8 @@ import { Tab, Row, Col, Nav } from 'react-bootstrap';
 import SubjectTabs from '../subjectTabs/SubjectTabs';
 import NewResource from '../newResource/NewResource';
 import Dashboard from '../dashboard/Dashboard';
-import { connect } from 'react-redux';
-import { getSubjects } from '../../store/actions/subjectActions';
-import { getResources } from '../../store/actions/resourceActions';
 
-const SideTabs = (props) => {
-    const { getSubjects, getResources } = props;
-
-    React.useEffect(() => {
-        getSubjects();
-        getResources();
-    }, [getSubjects, getResources]);
-
+const SideTabs = () => {
     return (
         <Tab.Container defaultActiveKey="dashboard">
             <Row>
@@ -44,10 +34,5 @@ const SideTabs = (props) => {
         </Tab.Container>
     )
 }
-
-const mapDispatchToProps = ({
-    getSubjects,
-    getResources
-})
   
-export default connect(null, mapDispatchToProps)(SideTabs);
+export default SideTabs;

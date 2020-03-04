@@ -5,8 +5,20 @@ import Signature from '../Signature/Signature';
 import Welcome from '../welcome/Welcome';
 import SideTabs from '../sideTabs/SideTabs';
 import './Home.css';
+import { getResources } from '../../store/actions/resourceActions';
+import { getSubjects } from '../../store/actions/subjectActions';
 
 const Home = (props) => {
+
+    const { auth, getResources, getSubjects } = props;
+
+    React.useEffect(() => {
+        if (auth.loggedIn) {
+            getSubjects();
+            getResources();
+        }
+    }, [auth, getResources, getSubjects])
+
     return (
         <div className="home-container">
         { props.auth.loggedIn ? (
@@ -34,4 +46,9 @@ const mapStateToProps = ({ auth }) => ({
     auth
 })
 
-export default connect(mapStateToProps)(Home);
+const mapDispatchToProps = ({
+    getResources,
+    getSubjects
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

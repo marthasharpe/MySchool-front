@@ -14,7 +14,6 @@ export const authLogin = (authInfo) => {
         dispatch(loginRequest());
         return axios.post(`${apiUrl}/users/login`, authInfo)
             .then(response => {
-                console.log(response.data)
                 dispatch(loginSuccess(response.data.user));
                 localStorage.setItem('token', response.data.token);
                 localStorage.setItem('userId', response.data.user.userId);

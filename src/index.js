@@ -5,14 +5,14 @@ import App from './components/app/App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Provider } from 'react-redux';
 import store from './store/store';
-import { LOGIN_SUCCESS } from './store/actions/authActions';
+import { authLogin } from './store/actions/authActions';
 
 // stay signed in during a session
 const token = localStorage.getItem('token');
 const userId = localStorage.getItem('userId');
 
 if (token && userId) {
-    store.dispatch({ type: LOGIN_SUCCESS });
+    authLogin();
 }
 
 ReactDOM.render(

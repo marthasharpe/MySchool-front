@@ -36,7 +36,6 @@ const LoginForm = (props) => {
     return (
         <Container className="auth-container">
             <Form className="auth-form" onSubmit={handleSubmit}>
-                <h2>Login</h2>
                 <Form.Group>
                     <Form.Label>Email</Form.Label>
                     <Form.Control

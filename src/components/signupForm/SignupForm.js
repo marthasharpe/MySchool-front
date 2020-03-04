@@ -56,7 +56,6 @@ const SignupForm = (props) => {
     return (
         <Container className="auth-container">
             <Form className="auth-form" onSubmit={handleSubmit}>
-                <h2>Signup</h2>
                 <Form.Group>
                     <Form.Label>First Name</Form.Label>
                     <Form.Control
@@ -102,11 +101,12 @@ const SignupForm = (props) => {
                         />
                 </Form.Group>
                 <Form.Group>
+                    <Form.Label>Re-Enter Password</Form.Label>
                     <Form.Control
                         type="password"
                         name="password2"
                         value={authInfo.password2}
-                        placeholder="re-enter password"
+                        placeholder="re-enter your password"
                         onChange={handleChange}
                         required
                         />
