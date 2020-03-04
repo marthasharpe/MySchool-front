@@ -36,10 +36,7 @@ const ResourceForm = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         // info to edit existing resource or add new resource
-        props.resource ? props.editResource({
-            ...info,
-            _id: props.resource._id
-        }) : props.addResource(info);
+        props.resource ? props.editResource(info, props.resource._id) : props.addResource(info);
         props.handleClose();
     }
     

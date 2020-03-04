@@ -5,6 +5,9 @@ import {
     ADD_RESOURCE_REQUEST,
     ADD_RESOURCE_SUCCESS,
     ADD_RESOURCE_FAILURE,
+    EDIT_RESOURCE_REQUEST,
+    EDIT_RESOURCE_SUCCESS,
+    EDIT_RESOURCE_FAILURE,
     DELETE_RESOURCE_REQUEST,
     DELETE_RESOURCE_SUCCESS,
     DELETE_RESOURCE_FAILURE,
@@ -51,6 +54,39 @@ const resourceReducer = (state = initialState, action) => {
                 resourceList: state.resourceList.concat(action.payload)
             }
         case ADD_RESOURCE_FAILURE:
+            return {
+                ...state,
+                loading: false,
+                error: action.payload
+            }
+        case EDIT_RESOURCE_REQUEST:
+            return {
+                ...state,
+                error: null,
+                loading: true,
+            }
+        case EDIT_RESOURCE_SUCCESS:
+            let updatedIndex = state.resourceList.findIndex(
+                obj => obj._id === action.payload._id
+            )
+            console.log(action.payload)
+            console.log(updatedIndex);
+            return {
+                ...state,
+                loading: false,
+                error: null,
+                resourceList: state.resourceList.map((resource, index) => {
+                    if (index !== updatedIndex) {
+                        return resource;
+                    } else {
+                        return {
+                            ...resource,
+                            ...action.payload
+                        }
+                    }
+                })
+            }
+        case EDIT_RESOURCE_FAILURE:
             return {
                 ...state,
                 loading: false,

@@ -93,19 +93,18 @@ export const addResourceFailure = (error) => {
     }
 }
 
-export const editResource = (info) => {
+export const editResource = (info, resourceId) => {
     console.log(info)
-    // return (dispatch) => {
-    //     dispatch(editResourceRequest());
-    //     return axios.patch(`${apiUrl}/resources/${userId}`, info, config)
-    //         .then(response => {
-    //             console.log(response.data)
-    //             dispatch(editResourceSuccess(response.data.createdResource));
-    //         })
-    //         .catch(error => {
-    //             dispatch(editResourceFailure(error));
-    //         })
-    // }
+    return (dispatch) => {
+        dispatch(editResourceRequest());
+        return axios.put(`${apiUrl}/resources/${userId}/${resourceId}`, info, config)
+            .then(response => {
+                dispatch(editResourceSuccess(response.data.updatedResource));
+            })
+            .catch(error => {
+                dispatch(editResourceFailure(error));
+            })
+    }
 }
 
 export const editResourceRequest = () => {
