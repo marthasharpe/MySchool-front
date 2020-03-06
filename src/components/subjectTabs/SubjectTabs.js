@@ -6,7 +6,7 @@ import NewSubject from '../newSubject/NewSubject';
 import './SubjectTabs.css';
 
 const SubjectTabs = (props) => {
-    const [ key, setKey ] = React.useState('New Subject');
+    const [ key, setKey ] = React.useState('All');
     
     return (
         <Container>
@@ -17,11 +17,12 @@ const SubjectTabs = (props) => {
                 style={{marginTop: '1rem'}}
                 >
                 <Tab
-                    key="New Subject"
-                    eventKey="New Subject"
-                    title="+ New Subject"
+                    key="All"
+                    eventKey="All"
+                    title="All"
                     >
-                    <NewSubject />
+                    {/* <ResourceCards /> */}
+                    <h1> All resources </h1>
                 </Tab>
                 {props.subjects.subjectList.length > 0 ? props.subjects.subjectList.sort(
                     (a, b) => a.name > b.name ? 1 : -1)
@@ -36,6 +37,13 @@ const SubjectTabs = (props) => {
                         </Tab>
                     )
                 }) : null}
+                <Tab
+                    key="New Subject"
+                    eventKey="New Subject"
+                    title="+ New Subject"
+                    >
+                    <NewSubject />
+                </Tab>
             </Tabs>
         </Container>
     )

@@ -16,8 +16,8 @@ export const DELETE_SUBJECT_FAILURE = 'DELETE_SUBJECT_FAILURE';
 const apiUrl = "https://floating-crag-05232.herokuapp.com"
 
 export const getSubjects = () => {
-    const token = localStorage.getItem('token');
-    const userId = localStorage.getItem('userId');
+    const token = sessionStorage.getItem('token');
+    const userId = sessionStorage.getItem('userId');
     const config = {
         headers: {
             'Authorization': `Bearer ${token}`
@@ -56,8 +56,8 @@ export const getSubjectsFailure = (error) => {
 }
 
 export const addSubject = (info) => {
-    const token = localStorage.getItem('token');
-    const userId = localStorage.getItem('userId');
+    const token = sessionStorage.getItem('token');
+    const userId = sessionStorage.getItem('userId');
     const config = {
         headers: {
             'Authorization': `Bearer ${token}`
@@ -96,8 +96,8 @@ export const addSubjectFailure = (error) => {
 }
 
 export const deleteSubject = (id) => {
-    const token = localStorage.getItem('token');
-    const userId = localStorage.getItem('userId');
+    const token = sessionStorage.getItem('token');
+    const userId = sessionStorage.getItem('userId');
     const config = {
         headers: {
             'Authorization': `Bearer ${token}`

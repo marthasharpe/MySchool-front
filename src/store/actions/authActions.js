@@ -15,8 +15,8 @@ export const authLogin = (authInfo) => {
         return axios.post(`${apiUrl}/users/login`, authInfo)
             .then(response => {
                 dispatch(loginSuccess(response.data.user));
-                localStorage.setItem('token', response.data.token);
-                localStorage.setItem('userId', response.data.user.userId);
+                sessionStorage.setItem('token', response.data.token);
+                sessionStorage.setItem('userId', response.data.user.userId);
             })
             .catch(error => {
                 dispatch(loginFailure());
@@ -50,8 +50,8 @@ export const authSignup = (authInfo) => {
         return axios.post(`${apiUrl}/users/signup`, authInfo)
             .then(response => {
                 dispatch(signupSuccess(response.data.user));
-                localStorage.setItem('token', response.data.token);
-                localStorage.setItem('userId', response.data.user._id);
+                sessionStorage.setItem('token', response.data.token);
+                sessionStorage.setItem('userId', response.data.user._id);
             })
             .catch(error => {
                 dispatch(signupFailure());

@@ -2,6 +2,7 @@
     padding: 1rem;
     margin-top: 50px;
     background-color: rgb(255, 255, 255, 0.7);
+    max-width: 500px !important;
 }
 
 .auth-form {

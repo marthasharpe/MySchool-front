@@ -18,9 +18,6 @@ const SideTabs = () => {
                         <Nav.Item className="sidetab-link">
                             <Nav.Link eventKey="subjects">By Subject</Nav.Link>
                         </Nav.Item>
-                        <Nav.Item className="sidetab-link">
-                            <Nav.Link eventKey="resources">All Resources</Nav.Link>
-                        </Nav.Item>
                     </Nav>
                 </Col>
                 <Col sm={9}>
@@ -30,9 +27,6 @@ const SideTabs = () => {
                         </Tab.Pane>
                         <Tab.Pane eventKey="subjects">
                             <SubjectTabs />
-                        </Tab.Pane>
-                        <Tab.Pane eventKey="resources">
-                            <h1>All Resources</h1>
                         </Tab.Pane>
                     </Tab.Content>
                 </Col>

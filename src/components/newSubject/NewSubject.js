@@ -18,7 +18,12 @@ const NewSubject = (props) => {
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        props.addSubject(info);
+        // check if subject already exists
+        if (props.subjects.subjectList.indexOf(info.name) !== -1) {
+            alert(`A subject named ${info.name} already exists!`)
+        } else {
+            props.addSubject(info);
+        }
         setInfo({
             name: '',
         })
