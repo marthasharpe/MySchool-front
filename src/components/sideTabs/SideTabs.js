@@ -16,7 +16,7 @@ const SideTabs = () => {
                             <Nav.Link eventKey="dashboard">Dashboard</Nav.Link>
                         </Nav.Item>
                         <Nav.Item className="sidetab-link">
-                            <Nav.Link eventKey="subjects">By Subject</Nav.Link>
+                            <Nav.Link eventKey="subjects">Subjects</Nav.Link>
                         </Nav.Item>
                     </Nav>
                 </Col>

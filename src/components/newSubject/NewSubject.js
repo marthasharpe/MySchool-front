@@ -19,10 +19,10 @@ const NewSubject = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         // check if subject already exists
-        if (props.subjects.subjectList.indexOf(info.name) !== -1) {
-            alert(`A subject named ${info.name} already exists!`)
+        if (props.subjects.subjectList.find(({name}) => name === info.name)) {
+            alert(`A subject named ${info.name} already exists!`);
         } else {
-            props.addSubject(info);
+            return props.addSubject(info);
         }
         setInfo({
             name: '',
@@ -53,8 +53,12 @@ const NewSubject = (props) => {
     )
 }
 
+const mapStateToProps = ({ subjects }) => ({
+    subjects
+})
+
 const mapDispatchToProps = {
     addSubject
 }
 
-export default connect(null, mapDispatchToProps)(NewSubject);
+export default connect(mapStateToProps, mapDispatchToProps)(NewSubject);

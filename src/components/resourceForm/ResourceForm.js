@@ -14,7 +14,7 @@ const ResourceForm = (props) => {
     })
 
     React.useEffect(() => {
-        // fill in fields for existing resource
+        // fill in fields to edit existing resource
         if (props.resource) {
             setInfo({
                 title: props.resource.title,
