@@ -73,7 +73,6 @@ const ResourceForm = (props) => {
                         value={info.link}
                         placeholder="resource URL"
                         onChange={handleChange}
-                        required
                         />
                 </Form.Group>
                 <Form.Group>

@@ -1,13 +1,22 @@
 import React from 'react';
-import { Tabs, Tab, Container } from 'react-bootstrap';
+import { Tabs, Tab, Container, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import { deleteSubject } from '../../store/actions/subjectActions';
 import ResourceCards from '../resourceCards/ResourceCards';
 import NewSubject from '../newSubject/NewSubject';
 import './SubjectTabs.css';
 
 const SubjectTabs = (props) => {
     const [ key, setKey ] = React.useState('All');
-    
+
+    let resources = props.resources.resourceList;
+    let subjects = props.subjects.subjectList;
+
+    const handleDeleteSubject = (id) => {
+        props.deleteSubject(id);
+        props.setKey('All');
+    }
+
     return (
         <Container>
             <Tabs
@@ -21,19 +30,41 @@ const SubjectTabs = (props) => {
                     eventKey="All"
                     title="All"
                     >
-                    {/* <ResourceCards /> */}
-                    <h1> All resources </h1>
+                    <Container className="resources-container">
+                        {resources.length ? resources.map(resource => {
+                            return <ResourceCards resource={resource}/>
+                        }) : (
+                            <div style={{margin: 50}}>
+                                <h5>You have no resources saved.</h5>
+                            </div>
+                        )}
+                    </Container>
                 </Tab>
-                {props.subjects.subjectList.length > 0 ? props.subjects.subjectList.sort(
-                    (a, b) => a.name > b.name ? 1 : -1)
+                {subjects.length ? subjects.sort((a, b) => a.name > b.name ? 1 : -1)
                     .map(subject => {
+                        let resourcesInSubject = resources.length ?   resources.filter(resource => resource.subject === subject.name) : [];
                     return (
                         <Tab
                             key={subject._id}
                             eventKey={subject.name}
                             title={subject.name}
                             >
-                            <ResourceCards subject={subject} setKey={setKey}/>
+                            <Container className="resources-container">
+                                { resourcesInSubject.length ?
+                                resourcesInSubject.map(resource => {
+                                    return <ResourceCards resource={resource}/>
+                                }) : (
+                                    <div style={{margin: 50}}>
+                                        <h5>You have no resources saved.</h5>
+                                        <Button
+                                            onClick={() => handleDeleteSubject(subject._id)}
+                                            variant="success"
+                                            >
+                                            Delete Subject
+                                        </Button>
+                                    </div>
+                                )}
+                            </Container>
                         </Tab>
                     )
                 }) : null}
@@ -49,8 +80,13 @@ const SubjectTabs = (props) => {
     )
 }
 
-const mapStateToProps = ({ subjects }) => ({
-    subjects
+const mapStateToProps = ({ subjects, resources }) => ({
+    subjects,
+    resources
 })
 
-export default connect(mapStateToProps)(SubjectTabs);
+const mapDispatchToProps = ({
+    deleteSubject
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(SubjectTabs);
