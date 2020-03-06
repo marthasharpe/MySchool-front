@@ -14,15 +14,15 @@ export const DELETE_SUBJECT_SUCCESS = 'DELETE_SUBJECT_SUCCESS';
 export const DELETE_SUBJECT_FAILURE = 'DELETE_SUBJECT_FAILURE';
 
 const apiUrl = "https://floating-crag-05232.herokuapp.com"
-const token = localStorage.getItem('token');
-const userId = localStorage.getItem('userId');
-let config = {
+
+export const getSubjects = () => {
+    const token = localStorage.getItem('token');
+    const userId = localStorage.getItem('userId');
+    const config = {
         headers: {
             'Authorization': `Bearer ${token}`
         }
     }
-
-export const getSubjects = () => {
     return (dispatch) => {
         dispatch(getSubjectsRequest());
         return axios.get(`${apiUrl}/subjects/${userId}`, config)
@@ -56,6 +56,13 @@ export const getSubjectsFailure = (error) => {
 }
 
 export const addSubject = (info) => {
+    const token = localStorage.getItem('token');
+    const userId = localStorage.getItem('userId');
+    const config = {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    }
     return (dispatch) => {
         dispatch(addSubjectRequest());
         return axios.post(`${apiUrl}/subjects/${userId}`, info, config)
@@ -89,6 +96,13 @@ export const addSubjectFailure = (error) => {
 }
 
 export const deleteSubject = (id) => {
+    const token = localStorage.getItem('token');
+    const userId = localStorage.getItem('userId');
+    const config = {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    }
     return (dispatch) => {
         dispatch(deleteSubjectRequest());
         return axios.delete(`${apiUrl}/subjects//${userId}/${id}`, config)

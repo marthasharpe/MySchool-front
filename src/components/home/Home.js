@@ -9,7 +9,6 @@ import { getResources } from '../../store/actions/resourceActions';
 import { getSubjects } from '../../store/actions/subjectActions';
 
 const Home = (props) => {
-
     const { auth, getResources, getSubjects } = props;
 
     React.useEffect(() => {
@@ -18,7 +17,7 @@ const Home = (props) => {
             getResources();
         }
     }, [auth, getResources, getSubjects])
-
+  
     return (
         <div className="home-container">
         { props.auth.loggedIn ? (

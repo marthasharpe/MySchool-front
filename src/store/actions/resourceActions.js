@@ -18,15 +18,15 @@ export const DELETE_RESOURCE_SUCCESS = 'DELETE_RESOURCE_SUCCESS';
 export const DELETE_RESOURCE_FAILURE = 'DELETE_RESOURCE_FAILURE';
 
 const apiUrl = "https://floating-crag-05232.herokuapp.com"
-const token = localStorage.getItem('token');
-const userId = localStorage.getItem('userId');
-let config = {
+
+export const getResources = () => {
+    const token = localStorage.getItem('token');
+    const userId = localStorage.getItem('userId');
+    const config = {
         headers: {
             'Authorization': `Bearer ${token}`
         }
     }
-
-export const getResources = () => {
     return (dispatch) => {
         dispatch(getResourcesRequest());
         return axios.get(`${apiUrl}/resources/${userId}`, config)
@@ -60,11 +60,17 @@ export const getResourcesFailure = (error) => {
 }
 
 export const addResource = (info) => {
+    const token = localStorage.getItem('token');
+    const userId = localStorage.getItem('userId');
+    const config = {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    }
     return (dispatch) => {
         dispatch(addResourceRequest());
         return axios.post(`${apiUrl}/resources/${userId}`, info, config)
             .then(response => {
-                console.log(response.data)
                 dispatch(addResourceSuccess(response.data.createdResource));
             })
             .catch(error => {
@@ -94,7 +100,13 @@ export const addResourceFailure = (error) => {
 }
 
 export const editResource = (info, resourceId) => {
-    console.log(info)
+    const token = localStorage.getItem('token');
+    const userId = localStorage.getItem('userId');
+    const config = {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    }
     return (dispatch) => {
         dispatch(editResourceRequest());
         return axios.put(`${apiUrl}/resources/${userId}/${resourceId}`, info, config)
@@ -128,6 +140,13 @@ export const editResourceFailure = (error) => {
 }
 
 export const deleteResource = (id) => {
+    const token = localStorage.getItem('token');
+    const userId = localStorage.getItem('userId');
+    const config = {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    }
     return (dispatch) => {
         dispatch(deleteResourceRequest());
         return axios.delete(`${apiUrl}/resources/${userId}/${id}`, config)

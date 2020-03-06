@@ -2,17 +2,18 @@ html, body {
     height: 100%;
     width: 100%;
     margin: 0;
-    background-image: url("./agriculture-clouds-countryside-cropland-440731.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
 }
 
 #root {
     height: 100%;
     width: 100%;
     margin: 0;
+    background-image: url("./agriculture-clouds-countryside-cropland-440731.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-color: rgb(63, 63, 63);
 }
 
 .link {
