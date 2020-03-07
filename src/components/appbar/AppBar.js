@@ -17,7 +17,7 @@ const AppBar = (props) => {
     }
 
     return (
-        <Navbar variant="dark" sticky="top" expand="xs">
+        <Navbar variant="dark" sticky="top" expand="sm">
             <Navbar.Brand>
                 <img
                     src={icon}

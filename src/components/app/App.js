@@ -1,5 +1,4 @@
 import React from 'react';
-import AppBar from '../appbar/AppBar';
 import SubjectTabs from '../subjectTabs/SubjectTabs';
 import Home from '../home/Home';
 import LoginForm from '../loginForm/LoginForm';
@@ -9,6 +8,7 @@ import {
   Switch,
   Route
 } from "react-router-dom";
+import AppBar from '../appbar/AppBar';
 
 const App = () => {
 
