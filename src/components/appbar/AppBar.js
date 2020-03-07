@@ -17,7 +17,7 @@ const AppBar = (props) => {
     }
 
     return (
-        <Navbar variant="dark" sticky="top">
+        <Navbar variant="dark" sticky="top" expand="xs">
             <Navbar.Brand>
                 <img
                     src={icon}
@@ -28,7 +28,8 @@ const AppBar = (props) => {
                     />
                 <NavLink to="/" className="link">MySchool</NavLink>
             </Navbar.Brand>
-            <Navbar.Collapse className="justify-content-end">
+            <Navbar.Toggle aria-controls="appbar-nav" />
+            <Navbar.Collapse id="appbar-nav" className="justify-content-end">
                 {props.auth.loggedIn ? (
                     <Nav>
                         <Button

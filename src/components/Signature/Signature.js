@@ -1,6 +1,6 @@
 import React from 'react';
 import './Signature.css';
-import home from './homepage.jpg';
+import home from './homepage.png';
 import linkedin from './LinkedIn-Icon.png';
 import github from './github.png';
 import { Container, Row } from 'react-bootstrap';
