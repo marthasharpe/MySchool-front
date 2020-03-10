@@ -20,7 +20,7 @@ const Home = (props) => {
 
     return (
         <div className="home-container">
-            { props.auth.loggedIn ? (
+            { auth.loggedIn ? (
                 <Container>
                     <SideTabs />
                 </Container>

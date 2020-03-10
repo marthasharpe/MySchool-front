@@ -69,8 +69,6 @@ const resourceReducer = (state = initialState, action) => {
             let updatedIndex = state.resourceList.findIndex(
                 obj => obj._id === action.payload._id
             )
-            console.log(action.payload)
-            console.log(updatedIndex);
             return {
                 ...state,
                 loading: false,
