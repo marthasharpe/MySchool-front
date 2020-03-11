@@ -22,7 +22,8 @@ const NewSubject = (props) => {
         if (props.subjects.subjectList.find(({name}) => name === info.name)) {
             alert(`A subject named ${info.name} already exists!`);
         } else {
-            return props.addSubject(info);
+            props.addSubject(info);
+            props.setKey(`${info.name}`)
         }
         setInfo({
             name: '',

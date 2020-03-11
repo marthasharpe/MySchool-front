@@ -73,7 +73,7 @@ const SubjectTabs = (props) => {
                     eventKey="New Subject"
                     title="+ New Subject"
                     >
-                    <NewSubject />
+                    <NewSubject setKey={setKey}/>
                 </Tab>
             </Tabs>
         </Container>
