@@ -2,19 +2,19 @@ import React from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { authLogin } from '../../store/actions/authActions';
+import { userLogin } from '../../store/actions/userActions';
 import './LoginForm.css';
 
 const LoginForm = (props) => {
 
-    const [ authInfo, setAuthInfo ] = React.useState({
+    const [ userInfo, setUserInfo ] = React.useState({
         email: '',
         password: ''
     })
 
     const handleChange = (e) => {
-        setAuthInfo({
-            ...authInfo,
+        setUserInfo({
+            ...userInfo,
             [e.target.name]: e.target.value
         })
     }
@@ -23,9 +23,9 @@ const LoginForm = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        props.authLogin(authInfo);
+        props.userLogin(userInfo);
         // reset local state
-        setAuthInfo({
+        setUserInfo({
             email: '',
             password: ''
         })
@@ -34,14 +34,14 @@ const LoginForm = (props) => {
     }
 
     return (
-        <Container className="auth-container">
-            <Form className="auth-form" onSubmit={handleSubmit}>
+        <Container className="user-container">
+            <Form className="user-form" onSubmit={handleSubmit}>
                 <Form.Group>
                     <Form.Label>Email</Form.Label>
                     <Form.Control
                         type="email"
                         name="email"
-                        value={authInfo.email}
+                        value={userInfo.email}
                         placeholder="enter your email"
                         onChange={handleChange}
                         required
@@ -52,7 +52,7 @@ const LoginForm = (props) => {
                     <Form.Control
                         type="password"
                         name="password"
-                        value={authInfo.password}
+                        value={userInfo.password}
                         placeholder="enter your password"
                         onChange={handleChange}
                         required
@@ -65,7 +65,7 @@ const LoginForm = (props) => {
 }
 
 const mapDispatchToProps = ({
-    authLogin
+    userLogin
 })
 
 export default connect(null, mapDispatchToProps)(LoginForm);

@@ -1,6 +1,11 @@
 import {
-    LOGIN_SUCCESS, LOGIN_FAILURE, LOGIN_REQUEST, SIGNUP_SUCCESS, SIGNUP_FAILURE, SIGNUP_REQUEST
-} from '../actions/authActions';
+    LOGIN_SUCCESS,
+    LOGIN_FAILURE,
+    LOGIN_REQUEST,
+    SIGNUP_SUCCESS,
+    SIGNUP_FAILURE,
+    SIGNUP_REQUEST
+} from '../actions/userActions';
 
 const initialState = {
     loading: false,
@@ -9,7 +14,7 @@ const initialState = {
     error: null
 }
 
-const authReducer = (state = initialState, action) => {
+const userReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOGIN_REQUEST:
             return {
@@ -58,4 +63,4 @@ const authReducer = (state = initialState, action) => {
     }
 }
 
-export default authReducer;
+export default userReducer;

@@ -1,9 +1,9 @@
 import React from 'react';
-import { Navbar, Nav, Button } from 'react-bootstrap';
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { NavLink, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import icon from '../../openbook.png';
-import { userLogout } from '../../store/actions/authActions';
+import { userLogout } from '../../store/actions/userActions';
 import './AppBar.css';
 
 const AppBar = (props) => {
@@ -14,6 +14,10 @@ const AppBar = (props) => {
         props.userLogout();
         sessionStorage.clear();
         history.push('/');
+    }
+
+    const handleDeleteAccount = () => {
+        alert('Cannot delete account yet.')
     }
 
     return (
@@ -30,16 +34,15 @@ const AppBar = (props) => {
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="appbar-nav" />
             <Navbar.Collapse id="appbar-nav" className="justify-content-end">
-                {props.auth.loggedIn ? (
-                    <Nav>
-                        <Button
-                            variant="link"
-                            onClick={handleLogout}
-                            id="logout"
-                            >
+                {props.user.loggedIn ? (
+                    <NavDropdown title="Account" id="dropdown">
+                        <NavDropdown.Item onClick={handleLogout}>
                             Log Out
-                        </Button>
-                    </Nav>                    
+                        </NavDropdown.Item>
+                        <NavDropdown.Item onClick={handleDeleteAccount}>
+                            Delete Account
+                        </NavDropdown.Item>
+                    </NavDropdown>                    
                 ) : (
                     <Nav>
                         <NavLink to="/login" className="link">Log In</NavLink>
@@ -51,8 +54,8 @@ const AppBar = (props) => {
     )
 }
 
-const mapStateToProps = ({ auth }) => ({
-    auth
+const mapStateToProps = ({ user }) => ({
+    user
 })
 
 const mapDispatchToProps = ({

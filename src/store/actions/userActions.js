@@ -9,10 +9,10 @@ export const USER_LOGOUT = 'USER_LOGOUT';
 
 const apiUrl = "https://floating-crag-05232.herokuapp.com";
 
-export const authLogin = (authInfo) => {
+export const userLogin = (userInfo) => {
     return (dispatch) => {
         dispatch(loginRequest());
-        return axios.post(`${apiUrl}/users/login`, authInfo)
+        return axios.post(`${apiUrl}/users/login`, userInfo)
             .then(response => {
                 dispatch(loginSuccess(response.data.user));
                 sessionStorage.setItem('token', response.data.token);
@@ -44,10 +44,10 @@ export const loginFailure = () => {
     }
 }
 
-export const authSignup = (authInfo) => {
+export const userSignup = (userInfo) => {
     return (dispatch) => {
         dispatch(signupRequest());
-        return axios.post(`${apiUrl}/users/signup`, authInfo)
+        return axios.post(`${apiUrl}/users/signup`, userInfo)
             .then(response => {
                 dispatch(signupSuccess(response.data.user));
                 sessionStorage.setItem('token', response.data.token);

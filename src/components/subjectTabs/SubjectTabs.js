@@ -18,65 +18,63 @@ const SubjectTabs = (props) => {
     }
 
     return (
-        <Container>
-            <Tabs
-                className="justify-content-center"
-                activeKey={key}
-                onSelect={tab => setKey(tab)}
-                style={{marginTop: '1rem'}}
+        <Tabs
+            className="justify-content-center"
+            activeKey={key}
+            onSelect={tab => setKey(tab)}
+            style={{marginTop: '1rem'}}
+            >
+            <Tab
+                key="All"
+                eventKey="All"
+                title="All"
                 >
-                <Tab
-                    key="All"
-                    eventKey="All"
-                    title="All"
-                    >
-                    <Container className="resources-container">
-                        {resources.length ? resources.map(resource => {
-                            return <ResourceCards resource={resource}/>
-                        }) : (
-                            <div style={{margin: 50}}>
-                                <h5>You have no resources saved.</h5>
-                            </div>
-                        )}
-                    </Container>
-                </Tab>
-                {subjects.length ? subjects.sort((a, b) => a.name > b.name ? 1 : -1)
-                    .map(subject => {
-                        let resourcesInSubject = resources.length ?   resources.filter(resource => resource.subject === subject.name) : [];
-                    return (
-                        <Tab
-                            key={subject._id}
-                            eventKey={subject.name}
-                            title={subject.name}
-                            >
-                            <Container className="resources-container">
-                                { resourcesInSubject.length ?
-                                resourcesInSubject.map(resource => {
-                                    return <ResourceCards resource={resource}/>
-                                }) : (
-                                    <div style={{margin: 50}}>
-                                        <h5>You have no resources saved.</h5>
-                                        <Button
-                                            onClick={() => handleDeleteSubject(subject._id)}
-                                            variant="success"
-                                            >
-                                            Delete Subject
-                                        </Button>
-                                    </div>
-                                )}
-                            </Container>
-                        </Tab>
-                    )
-                }) : null}
-                <Tab
-                    key="New Subject"
-                    eventKey="New Subject"
-                    title="+ New Subject"
-                    >
-                    <NewSubject setKey={setKey}/>
-                </Tab>
-            </Tabs>
-        </Container>
+                <Container className="resources-container">
+                    {resources.length ? resources.map(resource => {
+                        return <ResourceCards resource={resource}/>
+                    }) : (
+                        <div style={{margin: 50}}>
+                            <h5>You have no resources saved.</h5>
+                        </div>
+                    )}
+                </Container>
+            </Tab>
+            {subjects.length ? subjects.sort((a, b) => a.name > b.name ? 1 : -1)
+                .map(subject => {
+                    let resourcesInSubject = resources.length ?   resources.filter(resource => resource.subject === subject.name) : [];
+                return (
+                    <Tab
+                        key={subject._id}
+                        eventKey={subject.name}
+                        title={subject.name}
+                        >
+                        <Container className="resources-container">
+                            { resourcesInSubject.length ?
+                            resourcesInSubject.map(resource => {
+                                return <ResourceCards resource={resource}/>
+                            }) : (
+                                <div style={{margin: 50}}>
+                                    <h5>You have no resources saved.</h5>
+                                    <Button
+                                        onClick={() => handleDeleteSubject(subject._id)}
+                                        variant="success"
+                                        >
+                                        Delete Subject
+                                    </Button>
+                                </div>
+                            )}
+                        </Container>
+                    </Tab>
+                )
+            }) : null}
+            <Tab
+                key="New Subject"
+                eventKey="New Subject"
+                title="+ New Subject"
+                >
+                <NewSubject setKey={setKey}/>
+            </Tab>
+        </Tabs>
     )
 }
 

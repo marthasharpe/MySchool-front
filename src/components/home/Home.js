@@ -10,21 +10,21 @@ import { getResources } from '../../store/actions/resourceActions';
 import { getSubjects } from '../../store/actions/subjectActions';
 
 const Home = (props) => {
-    const { auth, getResources, getSubjects } = props;
+    const { user, getResources, getSubjects } = props;
 
     React.useEffect(() => {
-        if (auth.loggedIn) {
+        if (user.loggedIn) {
             getSubjects();
             getResources();
         }
-    }, [auth, getResources, getSubjects])
+    }, [user, getResources, getSubjects])
 
 
     return (
         <div className="home-container">
-            { auth.loading ? (
+            { user.loading ? (
                 <LoadingPage />
-                ) : auth.loggedIn ? (
+                ) : user.loggedIn ? (
                     <Container>
                         <SideTabs />
                     </Container>
@@ -46,8 +46,8 @@ const Home = (props) => {
     )
 }
 
-const mapStateToProps = ({ auth }) => ({
-    auth
+const mapStateToProps = ({ user }) => ({
+    user
 })
 
 const mapDispatchToProps = ({

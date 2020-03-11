@@ -1,15 +1,15 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import resourceReducer from './reducers/resourceReducer';
 import subjectReducer from './reducers/subjectReducer';
-import authReducer from './reducers/authReducer';
-import { USER_LOGOUT } from './actions/authActions';
+import userReducer from './reducers/userReducer';
+import { USER_LOGOUT } from './actions/userActions';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 const appReducer = combineReducers({
     resources: resourceReducer,
     subjects: subjectReducer,
-    auth: authReducer
+    user: userReducer
 })
 
 const rootReducer = (state, action) => {

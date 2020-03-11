@@ -2,12 +2,12 @@ import React from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { authSignup } from '../../store/actions/authActions';
+import { userSignup } from '../../store/actions/userActions';
 import './SignupForm.css';
 
 const SignupForm = (props) => {
 
-    const [ authInfo, setAuthInfo ] = React.useState({
+    const [ userInfo, setUserInfo ] = React.useState({
         firstName: '',
         lastName: '',
         email: '',
@@ -16,8 +16,8 @@ const SignupForm = (props) => {
     })
 
     const handleChange = (e) => {
-        setAuthInfo({
-            ...authInfo,
+        setUserInfo({
+            ...userInfo,
             [e.target.name]: e.target.value
         })
     }
@@ -26,22 +26,22 @@ const SignupForm = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (authInfo.password !== authInfo.password2) {
+        if (userInfo.password !== userInfo.password2) {
             alert('Passwords don\'t match.');
-            setAuthInfo({
-                ...authInfo,
+            setUserInfo({
+                ...userInfo,
                 password: '',
                 password2: ''
             });
         } else {
-            props.authSignup({
-                firstName: authInfo.firstName,
-                lastName: authInfo.lastName,
-                email: authInfo.email,
-                password: authInfo.password,
+            props.userSignup({
+                firstName: userInfo.firstName,
+                lastName: userInfo.lastName,
+                email: userInfo.email,
+                password: userInfo.password,
             });
             // reset local state
-            setAuthInfo({
+            setUserInfo({
                 firstName: '',
                 lastName: '',
                 email: '',
@@ -54,14 +54,14 @@ const SignupForm = (props) => {
     }
 
     return (
-        <Container className="auth-container">
-            <Form className="auth-form" onSubmit={handleSubmit}>
+        <Container className="user-container">
+            <Form className="user-form" onSubmit={handleSubmit}>
                 <Form.Group>
                     <Form.Label>First Name</Form.Label>
                     <Form.Control
                         type="text"
                         name="firstName"
-                        value={authInfo.firstName}
+                        value={userInfo.firstName}
                         placeholder="first name"
                         onChange={handleChange}
                         required
@@ -72,7 +72,7 @@ const SignupForm = (props) => {
                     <Form.Control
                         type="text"
                         name="lastName"
-                        value={authInfo.lastName}
+                        value={userInfo.lastName}
                         placeholder="last name"
                         onChange={handleChange}
                         required
@@ -83,7 +83,7 @@ const SignupForm = (props) => {
                     <Form.Control
                         type="email"
                         name="email"
-                        value={authInfo.email}
+                        value={userInfo.email}
                         placeholder="enter your email"
                         onChange={handleChange}
                         required
@@ -94,7 +94,7 @@ const SignupForm = (props) => {
                     <Form.Control
                         type="password"
                         name="password"
-                        value={authInfo.password}
+                        value={userInfo.password}
                         placeholder="create a password"
                         onChange={handleChange}
                         required
@@ -105,7 +105,7 @@ const SignupForm = (props) => {
                     <Form.Control
                         type="password"
                         name="password2"
-                        value={authInfo.password2}
+                        value={userInfo.password2}
                         placeholder="re-enter your password"
                         onChange={handleChange}
                         required
@@ -118,7 +118,7 @@ const SignupForm = (props) => {
 }
 
 const mapDispatchToProps = ({
-    authSignup
+    userSignup
 })
 
 export default connect(null, mapDispatchToProps)(SignupForm);

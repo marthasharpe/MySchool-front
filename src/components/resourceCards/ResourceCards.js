@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Badge, Button } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import EditResource from '../editResource/EditResource';
 import { deleteResource } from '../../store/actions/resourceActions';
@@ -14,9 +14,7 @@ const ResourceCards = (props) => {
     return (
         <Card key={props.resource._id} className="resource-cards">
             <Card.Header as="h5">
-                    {props.resource.title} <Badge variant="secondary" pill>
-                        {props.resource.status}
-                    </Badge>
+                    {props.resource.title}
             </Card.Header>
             <Card.Body>
                 <Card.Text>{props.resource.description}</Card.Text>
