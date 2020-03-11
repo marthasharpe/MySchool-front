@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { getResources } from './resourceActions';
+import { getSubjects } from './subjectActions';
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
@@ -15,6 +17,8 @@ export const userLogin = (userInfo) => {
         return axios.post(`${apiUrl}/users/login`, userInfo)
             .then(response => {
                 dispatch(loginSuccess(response.data.user));
+                dispatch(getResources());
+                dispatch(getSubjects());
                 sessionStorage.setItem('token', response.data.token);
                 sessionStorage.setItem('userId', response.data.user.userId);
             })

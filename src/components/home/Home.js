@@ -6,26 +6,15 @@ import Welcome from '../welcome/Welcome';
 import SideTabs from '../sideTabs/SideTabs';
 import LoadingPage from '../loadingPage/LoadingPage';
 import './Home.css';
-import { getResources } from '../../store/actions/resourceActions';
-import { getSubjects } from '../../store/actions/subjectActions';
 
 const Home = (props) => {
-    const { user, getResources, getSubjects } = props;
-
-    React.useEffect(() => {
-        if (user.loggedIn) {
-            getSubjects();
-            getResources();
-        }
-    }, [user, getResources, getSubjects])
-
 
     return (
         <div className="home-container">
-            { user.loading ? (
+            { props.user.loading ? (
                 <LoadingPage />
-                ) : user.loggedIn ? (
-                    <Container>
+                ) : props.user.loggedIn ? (
+                    <Container fluid>
                         <SideTabs />
                     </Container>
                 ) : (
@@ -52,9 +41,4 @@ const mapStateToProps = ({ user }) => ({
     user
 })
 
-const mapDispatchToProps = ({
-    getResources,
-    getSubjects
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps)(Home);
