@@ -33,7 +33,9 @@ const Home = (props) => {
                         <Welcome />
                         <Row className="justify-content-center">
                             <p style={{textAlign: "center"}}>
-                                A place to make your own curriculum.<br/>Create subjects and save learning resources.<br/>Track your progress and build an online portfolio.
+                                A place to make your own curriculum.<br/>
+                                Create subjects and save learning resources.<br/>
+                                Track your progress and build an online portfolio.
                             </p>
                         </Row>
                         <Row className="justify-content-center">
