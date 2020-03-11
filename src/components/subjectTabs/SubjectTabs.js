@@ -14,7 +14,7 @@ const SubjectTabs = (props) => {
 
     const handleDeleteSubject = (id) => {
         props.deleteSubject(id);
-        props.setKey('All');
+        setKey('All');
     }
 
     return (
