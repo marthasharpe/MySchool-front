@@ -1,10 +1,12 @@
 import React from 'react';
+import { Container, Spinner } from 'react-bootstrap';
+import "./LoadingPage.css"
 
 const LoadingPage = () => {
     return (
-        <div>
-            <h1>Loading...</h1>
-        </div>
+        <Container className="spinner-container">
+            <Spinner animation="border" variant="light" />
+        </Container>
     )
 }
 
