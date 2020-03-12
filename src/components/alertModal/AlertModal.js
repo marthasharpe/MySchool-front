@@ -1,21 +1,16 @@
 import React from 'react';
 import './AlertModal.css';
-import { Modal } from 'react-bootstrap';
+import { Modal, Button } from 'react-bootstrap';
 
-const AlertModal = () => {
-    const [show, setShow] = React.useState(false);
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-  
+const AlertModal = (props) => {
     return (
-        <Modal show={show} onHide={handleClose} animation={false}>
+        <Modal show={props.show} onHide={props.handleClose} animation={false}>
           <Modal.Header closeButton>
-            <Modal.Title>Oops...</Modal.Title>
+            <Modal.Title>Hey there...</Modal.Title>
           </Modal.Header>
-          <Modal.Body>Something went wrong.</Modal.Body>
+          <Modal.Body>{props.message}</Modal.Body>
           <Modal.Footer>
-            <Button variant="success" onClick={handleClose}>
+            <Button variant="success" onClick={props.handleClose}>
               Ok
             </Button>
           </Modal.Footer>
@@ -23,4 +18,4 @@ const AlertModal = () => {
     );
 }
 
-export default AlertModal
+export default AlertModal;

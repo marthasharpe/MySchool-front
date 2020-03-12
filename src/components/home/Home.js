@@ -5,18 +5,11 @@ import Signature from '../Signature/Signature';
 import Welcome from '../welcome/Welcome';
 import WelcomeSlider from '../welcomeSlider/WelcomeSlider';
 import SideTabs from '../sideTabs/SideTabs';
-import LoadingPage from '../loadingPage/LoadingPage';
-import { userLogout } from '../../store/actions/userActions';
 import './Home.css';
 
 const Home = (props) => {
 
-    if (props.user.loading) {
-        return <LoadingPage />
-    // } else if (props.user.error) {
-    //     alert(props.user.error);
-    //     props.userLogout();
-    } else if (props.user.loggedIn) {
+    if (props.user.loggedIn) {
         return (
             <Container fluid>
                 <SideTabs />
@@ -39,8 +32,4 @@ const mapStateToProps = ({ user }) => ({
     user
 })
 
-const mapDispatchToProps = ({
-    userLogout
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps)(Home);

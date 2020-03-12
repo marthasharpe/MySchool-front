@@ -4,9 +4,15 @@ import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { userLogin, userLogout } from '../../store/actions/userActions';
 import './LoginForm.css';
+import LoadingPage from '../loadingPage/LoadingPage';
+import AlertModal from '../alertModal/AlertModal';
 
 const LoginForm = (props) => {
-
+    
+    //modal state
+    const [show, setShow] = React.useState(true);
+  
+    //form state
     const [ userInfo, setUserInfo ] = React.useState({
         email: '',
         password: ''
@@ -29,6 +35,20 @@ const LoginForm = (props) => {
             email: '',
             password: ''
         })
+    }
+
+    const handleClose = () => {
+        setShow(false);
+        props.userLogout();
+    }
+
+    if (props.user.loading) {
+        return <LoadingPage />
+    } else if (props.user.error) {
+        return <AlertModal message={props.user.error} show={show} handleClose={handleClose}/>
+        // alert(props.user.error);
+        // props.userLogout();
+    } else if (props.user.loggedIn) {
         // redirect to home
         history.push('/');
     }
