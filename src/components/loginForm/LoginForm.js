@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { userLogin } from '../../store/actions/userActions';
+import { userLogin, userLogout } from '../../store/actions/userActions';
 import './LoginForm.css';
 
 const LoginForm = (props) => {
@@ -29,11 +29,6 @@ const LoginForm = (props) => {
             email: '',
             password: ''
         })
-    }
-
-    if (props.user.error) {
-        alert(props.user.error);
-    } else if (props.user.loggedIn) {
         // redirect to home
         history.push('/');
     }
@@ -74,7 +69,8 @@ const mapStateToProps = ({user}) => ({
 })
 
 const mapDispatchToProps = ({
-    userLogin
+    userLogin,
+    userLogout
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

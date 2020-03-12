@@ -6,12 +6,16 @@ import Welcome from '../welcome/Welcome';
 import WelcomeSlider from '../welcomeSlider/WelcomeSlider';
 import SideTabs from '../sideTabs/SideTabs';
 import LoadingPage from '../loadingPage/LoadingPage';
+import { userLogout } from '../../store/actions/userActions';
 import './Home.css';
 
 const Home = (props) => {
 
     if (props.user.loading) {
         return <LoadingPage />
+    // } else if (props.user.error) {
+    //     alert(props.user.error);
+    //     props.userLogout();
     } else if (props.user.loggedIn) {
         return (
             <Container fluid>
@@ -35,4 +39,8 @@ const mapStateToProps = ({ user }) => ({
     user
 })
 
-export default connect(mapStateToProps)(Home);
+const mapDispatchToProps = ({
+    userLogout
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

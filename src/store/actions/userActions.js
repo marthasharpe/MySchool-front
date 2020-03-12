@@ -7,6 +7,9 @@ export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 export const SIGNUP_REQUEST = 'SIGNUP_REQUEST';
 export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
 export const SIGNUP_FAILURE = 'SIGNUP_FAILURE';
+export const DELETE_REQUEST = 'DELETE_REQUEST';
+export const DELETE_SUCCESS = 'DELETE_SUCCESS';
+export const DELETE_FAILURE = 'DELETE_FAILURE';
 export const USER_LOGOUT = 'USER_LOGOUT';
 
 const apiUrl = "https://floating-crag-05232.herokuapp.com";
@@ -82,6 +85,46 @@ export const signupFailure = () => {
     return {
         type: SIGNUP_FAILURE,
         payload: 'Invalid email or password.'
+    }
+}
+
+export const userDelete = () => {
+    const token = sessionStorage.getItem('token');
+    const userId = sessionStorage.getItem('userId');
+    const config = {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    }
+    return (dispatch) => {
+        dispatch(deleteRequest());
+        return axios.delete(`${apiUrl}/users/${userId}`, config)
+            .then(response => {
+                dispatch(deleteSuccess());
+                sessionStorage.clear();
+            })
+            .catch(error => {
+                dispatch(deleteFailure());
+            })
+    }
+}
+
+export const deleteRequest = () => {
+    return {
+        type: DELETE_REQUEST
+    }
+}
+
+export const deleteSuccess = () => {
+    return {
+        type: DELETE_SUCCESS
+    }
+}
+
+export const deleteFailure = () => {
+    return {
+        type: DELETE_FAILURE,
+        payload: 'Could not delete account'
     }
 }
 

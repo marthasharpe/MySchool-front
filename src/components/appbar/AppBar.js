@@ -3,7 +3,7 @@ import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { NavLink, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import icon from '../../openbook.png';
-import { userLogout } from '../../store/actions/userActions';
+import { userLogout, userDelete } from '../../store/actions/userActions';
 import './AppBar.css';
 
 const AppBar = (props) => {
@@ -17,7 +17,9 @@ const AppBar = (props) => {
     }
 
     const handleDeleteAccount = () => {
-        alert('Cannot delete account yet.')
+        props.userDelete();
+        sessionStorage.clear();
+        history.push('/');
     }
 
     return (
@@ -59,7 +61,8 @@ const mapStateToProps = ({ user }) => ({
 })
 
 const mapDispatchToProps = ({
-    userLogout
+    userLogout,
+    userDelete
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppBar);

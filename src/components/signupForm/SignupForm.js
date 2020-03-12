@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { userSignup } from '../../store/actions/userActions';
+import { userSignup, userLogout } from '../../store/actions/userActions';
 import './SignupForm.css';
 
 const SignupForm = (props) => {
@@ -48,9 +48,9 @@ const SignupForm = (props) => {
                 password: '',
                 password2: ''
             })
-            // redirect to home
-            history.push('/');
         }
+        // redirect to home
+        history.push('/');
     }
 
     return (
@@ -117,8 +117,13 @@ const SignupForm = (props) => {
     )
 }
 
-const mapDispatchToProps = ({
-    userSignup
+const mapStateToProps = ({user}) => ({
+    user
 })
 
-export default connect(null, mapDispatchToProps)(SignupForm);
+const mapDispatchToProps = ({
+    userSignup,
+    userLogout
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignupForm);
