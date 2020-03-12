@@ -37,6 +37,7 @@ const LoginForm = (props) => {
         })
     }
 
+    // close modal
     const handleClose = () => {
         setShow(false);
         props.userLogout();
@@ -46,8 +47,6 @@ const LoginForm = (props) => {
         return <LoadingPage />
     } else if (props.user.error) {
         return <AlertModal message={props.user.error} show={show} handleClose={handleClose}/>
-        // alert(props.user.error);
-        // props.userLogout();
     } else if (props.user.loggedIn) {
         // redirect to home
         history.push('/');

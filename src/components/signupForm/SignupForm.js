@@ -4,9 +4,14 @@ import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { userSignup, userLogout } from '../../store/actions/userActions';
 import './SignupForm.css';
+import LoadingPage from '../loadingPage/LoadingPage';
+import AlertModal from '../alertModal/AlertModal';
 
 const SignupForm = (props) => {
 
+    //modal state
+    const [show, setShow] = React.useState(true);
+  
     const [ userInfo, setUserInfo ] = React.useState({
         firstName: '',
         lastName: '',
@@ -49,6 +54,19 @@ const SignupForm = (props) => {
                 password2: ''
             })
         }
+    }
+
+    // close modal
+    const handleClose = () => {
+        setShow(false);
+        props.userLogout();
+    }
+
+    if (props.user.loading) {
+        return <LoadingPage />
+    } else if (props.user.error) {
+        return <AlertModal message={props.user.error} show={show} handleClose={handleClose}/>
+    } else if (props.user.loggedIn) {
         // redirect to home
         history.push('/');
     }
