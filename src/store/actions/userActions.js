@@ -17,10 +17,12 @@ export const userLogin = (userInfo) => {
         return axios.post(`${apiUrl}/users/login`, userInfo)
             .then(response => {
                 dispatch(loginSuccess(response.data.user));
-                dispatch(getResources());
-                dispatch(getSubjects());
                 sessionStorage.setItem('token', response.data.token);
                 sessionStorage.setItem('userId', response.data.user.userId);
+            })
+            .then(() => {
+                dispatch(getResources());
+                dispatch(getSubjects());
             })
             .catch(error => {
                 dispatch(loginFailure());
