@@ -29,6 +29,11 @@ const LoginForm = (props) => {
             email: '',
             password: ''
         })
+    }
+
+    if (props.user.error) {
+        alert(props.user.error);
+    } else if (props.user.loggedIn) {
         // redirect to home
         history.push('/');
     }
@@ -64,8 +69,12 @@ const LoginForm = (props) => {
     )
 }
 
+const mapStateToProps = ({user}) => ({
+    user
+})
+
 const mapDispatchToProps = ({
     userLogin
 })
 
-export default connect(null, mapDispatchToProps)(LoginForm);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

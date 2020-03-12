@@ -11,10 +11,6 @@ const Home = (props) => {
 
     if (props.user.loading) {
         return <LoadingPage />
-    } else if (props.user.error) {
-        return (
-            <h1>{props.user.error}</h1>
-        )
     } else if (props.user.loggedIn) {
         return (
             <Container fluid>
