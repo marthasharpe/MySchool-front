@@ -7,7 +7,7 @@ import Dashboard from '../dashboard/Dashboard';
 
 const SideTabs = () => {
     return (
-        <Tab.Container defaultActiveKey="dashboard">
+        <Tab.Container id="sidetabs-container" defaultActiveKey="dashboard">
             <Row>
                 <Col sm={3}>
                     <NewResource />
