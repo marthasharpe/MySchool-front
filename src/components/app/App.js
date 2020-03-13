@@ -3,17 +3,16 @@ import SubjectTabs from '../subjectTabs/SubjectTabs';
 import Home from '../home/Home';
 import LoginForm from '../loginForm/LoginForm';
 import SignupForm from '../signupForm/SignupForm';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
+import { Router, Switch, Route } from "react-router-dom";
+import { createBrowserHistory } from 'history';
 import AppBar from '../appbar/AppBar';
 
 const App = () => {
 
+  const history = createBrowserHistory();
+
   return (
-    <Router>
+    <Router history={history}>
       <AppBar />
       <Switch>
         <Route exact path="/"><Home /></Route>
