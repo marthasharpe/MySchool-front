@@ -6,6 +6,29 @@ import { USER_LOGOUT } from './actions/userActions';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
+// save redux state to session storage
+const saveToSessionStorage = (state) => {
+    try {
+        const serializedState = JSON.stringify(state);
+        sessionStorage.setItem('state', serializedState);
+    } catch(e) {
+        console.log(e);
+    }
+}
+
+// get redux state from session storage
+const loadFromSessionStorage = () => {
+    try {
+        const serializedState = sessionStorage.getItem('state');
+        if(serializedState === null) return undefined
+        return JSON.parse(serializedState);
+    } catch(e) {
+        console.log(e);
+        return undefined
+    }
+}
+
+// combine reducers
 const appReducer = combineReducers({
     resources: resourceReducer,
     subjects: subjectReducer,
@@ -16,15 +39,24 @@ const rootReducer = (state, action) => {
     // when a logout action is dispatched it will reset redux state
     if (action.type === USER_LOGOUT) {
         state = undefined;
-        localStorage.clear();
+        sessionStorage.clear();
     } 
     return appReducer(state, action);
 };
 
-export default createStore(
+const persistedState = loadFromSessionStorage()
+
+// create Redux store with devtools and middleware
+const store = createStore(
     rootReducer,
+    // overwrite keys from root reducer with persisted state
+    persistedState,
     composeWithDevTools(
         applyMiddleware(thunk)
     )
 )
 
+// pass current state to session storage
+store.subscribe(() => saveToSessionStorage(store.getState()))
+
+export default store;
