@@ -11,7 +11,7 @@ const Home = (props) => {
 
     if (props.user.loggedIn) {
         return (
-            <Container style={{marginTop: '2rem', height: '100%'}}>
+            <Container>
                 <SideTabs />
             </Container>
         )

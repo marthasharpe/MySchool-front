@@ -8,13 +8,14 @@ html, body {
     height: 100%;
     width: 100%;
     margin: 0;
-    overflow: hidden;
+    overflow: auto;
     background-image: url("./agriculture-clouds-countryside-cropland-440731.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
     background-color: rgb(0, 146, 214);
+    /* background-color: rgb(80, 80, 80); */
 }
 
 .link {
