@@ -72,7 +72,7 @@ export const addSubject = (info) => {
         dispatch(addSubjectSuccess(response.data.newSubject));
       })
       .catch((error) => {
-        dispatch(getSubjectsFailure(error));
+        dispatch(addSubjectFailure(error));
       });
   };
 };

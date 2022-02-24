@@ -1,0 +1,7 @@
+.dashboard-container {
+  padding: 3rem;
+  text-align: center;
+  background-color: rgb(255, 255, 255, 0.7);
+  max-height: 80vh;
+  width: 100%;
+}

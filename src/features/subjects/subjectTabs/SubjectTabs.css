@@ -1,0 +1,14 @@
+.nav-tabs .nav-link {
+  background-color: rgb(255, 255, 255, 0.7);
+}
+
+.resources-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  max-height: 80vh;
+  padding: 1rem;
+  background-color: rgb(255, 255, 255, 0.7);
+  text-align: center;
+  overflow: auto;
+}

@@ -1,12 +1,12 @@
-.sidetab-link {
-    background-color: rgb(255, 255, 255, 0.7);
-    border: 1px solid trasparent;
+.sidetabs-link {
+  background-color: rgb(255, 255, 255, 0.7);
+  border: 1px solid trasparent;
 }
 
-.sidetab-link .active {
-    background-color: rgb(255, 255, 255);
+.sidetabs-link .active {
+  background-color: rgb(255, 255, 255);
 }
 
 #sidetabs-container {
-    height: 100%;
+  margin-top: 50px;
 }
