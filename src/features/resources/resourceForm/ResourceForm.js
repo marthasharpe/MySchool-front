@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import { Form, Button, Container } from "react-bootstrap";
 import { addResource, editResource } from "store/actions/resourceActions";
-import NewSubjectButton from "features/subjects/newSubjectButton/NewSubjectButton";
 
 const ResourceForm = (props) => {
   const [info, setInfo] = React.useState({

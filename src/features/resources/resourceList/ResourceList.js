@@ -16,7 +16,7 @@ const ResourceList = (props) => {
       <Row className="justify-content-center">
         {resources.length ? (
           resources.map((resource) => {
-            return <ResourceCard resource={resource} />;
+            return <ResourceCard key={resource._id} resource={resource} />;
           })
         ) : (
           <div style={{ margin: 50 }}>

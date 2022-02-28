@@ -43,7 +43,12 @@ const SubjectTabs = (props) => {
                   <Container className="resources-container">
                     {resourcesInSubject.length ? (
                       resourcesInSubject.map((resource) => {
-                        return <ResourceCard resource={resource} />;
+                        return (
+                          <ResourceCard
+                            key={resource._id}
+                            resource={resource}
+                          />
+                        );
                       })
                     ) : (
                       <div style={{ margin: 50 }}>
