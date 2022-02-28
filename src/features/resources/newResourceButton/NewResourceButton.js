@@ -14,7 +14,13 @@ const NewResourceButton = () => {
       <Button onClick={handleShow} variant="success" id="new-resource">
         + New Resource
       </Button>
-      <Modal show={show} onHide={handleClose}>
+      <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+        centered
+      >
         <Modal.Header closeButton>
           <Modal.Title>New Resource</Modal.Title>
         </Modal.Header>

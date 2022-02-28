@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Form, Button, Container } from "react-bootstrap";
 import { addResource, editResource } from "store/actions/resourceActions";
+import NewSubjectButton from "features/subjects/newSubjectButton/NewSubjectButton";
 
 const ResourceForm = (props) => {
   const [info, setInfo] = React.useState({
@@ -9,7 +10,6 @@ const ResourceForm = (props) => {
     description: "",
     link: "",
     subject: "",
-    status: "",
   });
 
   React.useEffect(() => {
@@ -20,7 +20,6 @@ const ResourceForm = (props) => {
         description: props.resource.description,
         link: props.resource.link,
         subject: props.resource.subject,
-        status: props.resource.status,
       });
     }
   }, [props.resource]);
@@ -90,7 +89,6 @@ const ResourceForm = (props) => {
                 {subject.name}
               </option>
             ))}
-            <option>+ Add a Subject</option>
           </Form.Control>
         </Form.Group>
         <Button variant="success" type="submit">

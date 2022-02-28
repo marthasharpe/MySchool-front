@@ -8,8 +8,8 @@ const AlertModal = (props) => {
       show={props.show}
       backdrop="static"
       keyboard={false}
-      onHide={props.handleClose}
       centered
+      onHide={props.handleClose}
     >
       <Modal.Header closeButton>
         <Modal.Title>Hey there...</Modal.Title>

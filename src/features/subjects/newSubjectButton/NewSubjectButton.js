@@ -16,7 +16,13 @@ const NewSubjectButton = (props) => {
       <Button onClick={handleShow} variant="success" id="new-subject">
         + New Subject
       </Button>
-      <Modal show={show} onHide={handleClose}>
+      <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+        centered
+      >
         <Modal.Header closeButton>
           <Modal.Title>New Subject</Modal.Title>
         </Modal.Header>

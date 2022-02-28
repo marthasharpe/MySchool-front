@@ -14,7 +14,13 @@ const EditResourceButton = (props) => {
       <Button variant="link" onClick={handleShow} className="link">
         Edit
       </Button>
-      <Modal show={show} onHide={handleClose} animation={false}>
+      <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+        centered
+      >
         <Modal.Header closeButton>
           <Modal.Title>Edit Resource</Modal.Title>
         </Modal.Header>
